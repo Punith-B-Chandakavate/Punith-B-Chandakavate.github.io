@@ -6,6 +6,8 @@
     <title>Developer Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/skill-icons/css/skill-icons.css" rel="stylesheet">
+
     <style>
         .hero-section {
             height: 100vh;
@@ -35,6 +37,20 @@
         .social-icons a:hover {
             color: #0b5ed7;
         }
+        
+        .skill-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            height: 100%;
+            transition: transform 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
     </style>
 </head>
 <body>
@@ -82,7 +98,7 @@
             <h2 class="text-center mb-5">About Me</h2>
             <div class="row align-items-center">
                 <div class="col-md-4 mb-4">
-                    <img src="/api/placeholder/400/400" alt="Profile" class="img-fluid rounded-circle">
+                    <img src="profile_photo.png" alt="Profile" class="img-fluid rounded-circle">
                 </div>
                 <div class="col-md-8">
                     <p class="lead">Hello! I'm a passionate full-stack developer with experience in building web applications. I focus on creating clean, efficient, and user-friendly solutions.</p>
@@ -101,7 +117,7 @@
                 <!-- Project 1 -->
                 <div class="col-md-4 mb-4">
                     <div class="card project-card">
-                        <img src="/api/placeholder/400/300" class="card-img-top" alt="Project 1">
+                        <img src="biotimecloudv2.png" class="card-img-top" alt="Project 1" style="padding: 25px;">
                         <div class="card-body">
                             <h5 class="card-title">Project 1</h5>
                             <p class="card-text">A brief description of your first project and the technologies used.</p>
@@ -112,7 +128,7 @@
                 <!-- Project 2 -->
                 <div class="col-md-4 mb-4">
                     <div class="card project-card">
-                        <img src="/api/placeholder/400/300" class="card-img-top" alt="Project 2">
+                        <img src="intelligent-time.png" class="card-img-top" alt="Project 2">
                         <div class="card-body">
                             <h5 class="card-title">Project 2</h5>
                             <p class="card-text">A brief description of your second project and the technologies used.</p>
@@ -123,7 +139,7 @@
                 <!-- Project 3 -->
                 <div class="col-md-4 mb-4">
                     <div class="card project-card">
-                        <img src="/api/placeholder/400/300" class="card-img-top" alt="Project 3">
+                        <img src="easyTimePro.png" class="card-img-top" alt="Project 3">
                         <div class="card-body">
                             <h5 class="card-title">Project 3</h5>
                             <p class="card-text">A brief description of your third project and the technologies used.</p>
@@ -140,21 +156,53 @@
         <div class="container">
             <h2 class="text-center mb-5">Skills</h2>
             <div class="row text-center">
-                <div class="col-md-3 mb-4">
-                    <i class="fab fa-html5 skill-icon"></i>
+                <div class="col-md-2 mb-6 skill-card">
+                    <img src="https://skillicons.dev/icons?i=python" class="skill-icon" />
+                    <h4>Python</h4>
+                </div>
+                <div class="col-md-2 mb-4 skill-card">
+                    <img src="https://skillicons.dev/icons?i=django" class="skill-icon" />
+                    <h4>Django</h4>
+                </div>
+                <div class="col-md-2 mb-4 skill-card">
+                    <img src="https://skillicons.dev/icons?i=html" class="skill-icon" />
                     <h4>HTML5</h4>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <i class="fab fa-css3-alt skill-icon"></i>
-                    <h4>CSS3</h4>
+                <div class="col-md-2 mb-4 skill-card">
+                    <img src="https://skillicons.dev/icons?i=css" class="skill-icon" />
+                    <h4>CSS</h4>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <i class="fab fa-js skill-icon"></i>
-                    <h4>JavaScript</h4>
+                <div class="col-md-2 mb-4 skill-card">
+                    <img src="https://skillicons.dev/icons?i=js" class="skill-icon" />
+                    <h4>JavaScript(Basic)</h4>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <i class="fab fa-react skill-icon"></i>
-                    <h4>React</h4>
+                <div class="col-md-2 mb-4 skill-card">
+                    <img src="https://skillicons.dev/icons?i=postgres" class="skill-icon" />
+                    <h4>postgres</h4>
+                </div>
+                <div class="col-md-2 mb-4 skill-card">
+                    <img src="https://skillicons.dev/icons?i=postman" class="skill-icon" />
+                    <h4>postman</h4>
+                </div>
+                <div class="col-md-2 mb-4 skill-card">
+                    <img src="https://skillicons.dev/icons?i=vscode" class="skill-icon" />
+                    <h4>vscode</h4>
+                </div>
+                <div class="col-md-2 mb-4 skill-card">
+                    <img src="https://skillicons.dev/icons?i=pycharm" class="skill-icon" />
+                    <h4>pycharm</h4>
+                </div>
+                <div class="col-md-2 mb-4 skill-card">
+                    <img src="https://skillicons.dev/icons?i=git" class="skill-icon" />
+                    <h4>git</h4>
+                </div>
+                <div class="col-md-2 mb-4 skill-card">
+                    <img src="https://skillicons.dev/icons?i=github" class="skill-icon" />
+                    <h4>github</h4>
+                </div>
+                <div class="col-md-2 mb-4 skill-card">
+                    <img src="https://skillicons.dev/icons?i=gitlab" class="skill-icon" />
+                    <h4>gitlab</h4>
                 </div>
             </div>
         </div>
