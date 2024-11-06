@@ -93,6 +93,25 @@
             transform: translateY(-5px);
         }
 
+        .col-md-3 {
+            padding: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .col-md-3 {
+                flex: 0 0 auto;
+                width: 25%;
+                
+            }
+        }
+
+        @media (min-width: 992px) {
+            .col-lg-2 {
+                flex: 0 0 auto;
+                width: 16.66667%;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -145,7 +164,7 @@
             <h2 class="text-center mb-5">About Me</h2>
             <div class="row align-items-center">
                 <div class="col-md-12">
-                    <p class="lead">Hello! I'm a passionate full-stack developer with experience in building web applications. I focus on creating clean, efficient, and user-friendly solutions.</p>
+                    <p class="lead">Hello! I'm a passionate Django developer with experience in building web applications. I focus on creating clean, efficient, and user-friendly solutions.</p>
                     <p>With a background in [Your Background], I bring a unique perspective to every project. I'm constantly learning new technologies and improving my skills.</p>
                     <a href="#" class="btn btn-primary">Download CV</a>
                 </div>
@@ -199,58 +218,83 @@
     <section id="skills" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">Skills</h2>
-            <div class="row text-center">
-                <div class="col-md-2 mb-6 skill-card">
-                    <img src="https://skillicons.dev/icons?i=python" class="skill-icon" />
-                    <h4>Python</h4>
+            <div class="row">
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="skill-card">
+                        <img src="https://skillicons.dev/icons?i=python" class="skill-icon" />
+                        <h4>Python</h4>
+                    </div>
                 </div>
-                <div class="col-md-2 mb-4 skill-card">
-                    <img src="https://skillicons.dev/icons?i=django" class="skill-icon" />
-                    <h4>Django</h4>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="skill-card">
+                        <img src="https://skillicons.dev/icons?i=django" class="skill-icon" />
+                        <h4>Django</h4>
+                    </div>
                 </div>
-                <div class="col-md-2 mb-4 skill-card">
-                    <img src="https://skillicons.dev/icons?i=html" class="skill-icon" />
-                    <h4>HTML5</h4>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="skill-card">
+                        <img src="https://skillicons.dev/icons?i=html" class="skill-icon" />
+                        <h4>HTML5</h4>
+                    </div>
                 </div>
-                <div class="col-md-2 mb-4 skill-card">
-                    <img src="https://skillicons.dev/icons?i=css" class="skill-icon" />
-                    <h4>CSS</h4>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="skill-card">
+                        <img src="https://skillicons.dev/icons?i=css" class="skill-icon" />
+                        <h4>CSS</h4>
+                    </div>
                 </div>
-                <div class="col-md-2 mb-4 skill-card">
-                    <img src="https://skillicons.dev/icons?i=js" class="skill-icon" />
-                    <h4>JavaScript(Basic)</h4>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="skill-card">
+                        <img src="https://skillicons.dev/icons?i=js" class="skill-icon" />
+                        <h4>JS(Basic)</h4>
+                    </div>
                 </div>
-                <div class="col-md-2 mb-4 skill-card">
-                    <img src="https://skillicons.dev/icons?i=postgres" class="skill-icon" />
-                    <h4>postgres</h4>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="skill-card">
+                        <img src="https://skillicons.dev/icons?i=postgres" class="skill-icon" />
+                        <h4>postgres</h4>
+                    </div>
                 </div>
-                <div class="col-md-2 mb-4 skill-card">
-                    <img src="https://skillicons.dev/icons?i=postman" class="skill-icon" />
-                    <h4>postman</h4>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="skill-card">
+                        <img src="https://skillicons.dev/icons?i=postman" class="skill-icon" />
+                        <h4>postman</h4>
+                    </div>
                 </div>
-                <div class="col-md-2 mb-4 skill-card">
-                    <img src="https://skillicons.dev/icons?i=vscode" class="skill-icon" />
-                    <h4>vscode</h4>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="skill-card">
+                        <img src="https://skillicons.dev/icons?i=vscode" class="skill-icon" />
+                        <h4>vscode</h4>
+                    </div>
                 </div>
-                <div class="col-md-2 mb-4 skill-card">
-                    <img src="https://skillicons.dev/icons?i=pycharm" class="skill-icon" />
-                    <h4>pycharm</h4>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="skill-card">
+                        <img src="https://skillicons.dev/icons?i=pycharm" class="skill-icon" />
+                        <h4>pycharm</h4>
+                    </div>
                 </div>
-                <div class="col-md-2 mb-4 skill-card">
-                    <img src="https://skillicons.dev/icons?i=git" class="skill-icon" />
-                    <h4>git</h4>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="skill-card">
+                        <img src="https://skillicons.dev/icons?i=git" class="skill-icon" />
+                        <h4>git</h4>
+                    </div>
                 </div>
-                <div class="col-md-2 mb-4 skill-card">
-                    <img src="https://skillicons.dev/icons?i=github" class="skill-icon" />
-                    <h4>github</h4>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="skill-card">
+                        <img src="https://skillicons.dev/icons?i=github" class="skill-icon" />
+                        <h4>github</h4>
+                    </div>
                 </div>
-                <div class="col-md-2 mb-4 skill-card">
-                    <img src="https://skillicons.dev/icons?i=gitlab" class="skill-icon" />
-                    <h4>gitlab</h4>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="skill-card">
+                        <img src="https://skillicons.dev/icons?i=gitlab" class="skill-icon" />
+                        <h4>gitlab</h4>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Contact Section -->
     <section id="contact" class="py-5 bg-light">
