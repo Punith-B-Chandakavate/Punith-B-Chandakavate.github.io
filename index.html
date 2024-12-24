@@ -249,6 +249,74 @@
         
         /* --------------------- Experience section ---------------- */
 
+        .experience-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        .experience-item {
+            display: flex;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .experience-year {
+            min-width: 120px;
+            position: relative;
+            margin-right: 40px;
+        }
+
+        .experience-year span {
+            background-color: #4a4a4a;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+
+        .experience-line {
+            position: absolute;
+            left: 70px;
+            top: 30px;
+            height: calc(100% + 12px); /* Extend the line to connect to the next item */
+            width: 2px;
+            background-color: #4a4a4a;
+        }
+
+        .experience-circle {
+            position: absolute;
+            left: 63px; /* Adjusted to center with the line */
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            background-color: #ffd700;
+            border-radius: 50%;
+        }
+
+        .experience-content {
+            flex: 1;
+        }
+
+        .experience-content h2 {
+            font-size: 24px;
+            margin: 0 0 8px 0;
+        }
+
+        .experience-content .company {
+            font-size: 18px;
+            color: #cccccc;
+            margin: 0 0 16px 0;
+        }
+
+        .experience-content .description {
+            line-height: 1.6;
+            color: #b0b0b0;
+            margin: 0;
+        }
+
     </style>
 </head>
 <body>
@@ -440,6 +508,9 @@
             <h2 class="text-center mb-5 Merriweather_font">Experience</h2>
             <div class="row align-items-center">
                 <div class="col-md-12">
+                    <div class="experience-container">
+                        <div id="experience"></div>
+                    </div>
 
                 </div>
             </div>
@@ -487,5 +558,45 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const experienceData = [
+            {
+                year: 2022,
+                title: "Junior Python Developer",
+                company: "Bengaluru, India",
+                description: "A Python Developer with expertise in creating scalable, secure applications and optimizing performance. Key contributions include developing APIs with Django REST Framework, modernizing the UI of BioTimeCloud, and addressing security vulnerabilities in EasyTimePro. Experienced in leading teams, managing project timelines, and collaborating with clients to deliver customized solutions. Strong focus on problem-solving, code optimization, and ensuring high-quality application delivery."
+            }
+        ];
+
+        function renderTimeline() {
+            const experience = document.getElementById('experience');
+            experience.innerHTML = '';
+            experienceData.forEach(item => {
+                const timelineItem = document.createElement('div');
+                timelineItem.classList.add('experience-item');
+
+                const yearDiv = document.createElement('div');
+                yearDiv.classList.add('experience-year');
+                yearDiv.innerHTML = `
+                    <span>${item.year}</span>
+                    <div class="experience-circle"></div>
+                    <div class="experience-line"></div>
+                `;
+
+                const contentDiv = document.createElement('div');
+                contentDiv.classList.add('experience-content');
+                contentDiv.innerHTML = `
+                    <h2>${item.title}</h2>
+                    <p class="company">${item.company}</p>
+                    <p class="description">${item.description}</p>
+                `;
+
+                timelineItem.appendChild(yearDiv);
+                timelineItem.appendChild(contentDiv);
+                experience.appendChild(timelineItem);
+            });
+        }
+        renderTimeline();
+    </script>
 </body>
 </html>
