@@ -11,7 +11,8 @@
 
     <style>
         :root {
-            --primary-color: #ffc107;
+            --tw-text-opacity: 1;
+            --primary-color: rgb(245 158 11 / var(--tw-text-opacity));
             --dark-bg: #1a1a1a;
             --card-bg: #2a2a2a;
             --icon-bg: white;
@@ -274,6 +275,7 @@
             border-radius: 4px;
             font-size: 14px;
             display: inline-block;
+            margin-left: -95px;
         }
 
 
@@ -292,8 +294,9 @@
             top: 8px;
             width: 16px;
             height: 16px;
-            background-color: #ffd700;
+            background-color: var(--primary-color);
             border-radius: 50%;
+            box-shadow: 0px 0px 15px 1px var(--primary-color);
         }
 
         .experience-content {
@@ -316,7 +319,30 @@
             color: #b0b0b0;
             margin: 0;
         }
+        .square {
+            width: 60px;
+            height: 40px;
+            background-color: black;
+            position: relative; /* For positioning the year inside the square */
+            
+        }
 
+        .square span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .square-arrow {
+            width: 50px;
+            height: 40px;
+            background-color: black;
+            clip-path: polygon(25% 50%, 0% 0%, 0% 100%);
+        }
     </style>
 </head>
 <body>
@@ -561,7 +587,7 @@
     <script>
         const experienceData = [
             {
-                year: 2022,
+                year: 'Oct-2022 to Now',
                 title: "Junior Python Developer",
                 company: "Bengaluru, India",
                 description: "A Python Developer with expertise in creating scalable, secure applications and optimizing performance. Key contributions include developing APIs with Django REST Framework, modernizing the UI of BioTimeCloud, and addressing security vulnerabilities in EasyTimePro. Experienced in leading teams, managing project timelines, and collaborating with clients to deliver customized solutions. Strong focus on problem-solving, code optimization, and ensuring high-quality application delivery."
