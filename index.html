@@ -6,7 +6,6 @@
     <title>Punith B Chandakavate Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/skill-icons/css/skill-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="profile_photo.png" type="image/x-icon">
 
@@ -18,10 +17,30 @@
             --card-bg: #2a2a2a;
             --icon-bg: white;
         }
-        
+
+        /* Theme variables for light/dark mode */
+        :root[data-mode="light"] {
+            --tw-text-opacity: 1;
+            --primary-color: rgb(245 158 11 / var(--tw-text-opacity));
+            --dark-bg: #ffffff;
+            --card-bg: #f8f9fa;
+            --icon-bg: #333333;
+            --text-color: #333333;
+            --navbar-bg: #ffffff;
+        }
+
+        /* Dark theme variables */
+        :root[data-mode="dark"] {
+            --dark-bg: #1a1a1a;
+            --card-bg: #2a2a2a;
+            --icon-bg: white;
+            --text-color: white;
+            --navbar-bg: #1a1a1a;
+        }
+       
         body {
             background-color: var(--dark-bg);
-            color: var(--icon-bg);
+            color: var(--text-color);
             font-family: 'Poppins', sans-serif;
         }
         .Merriweather_font {
@@ -47,6 +66,14 @@
                 padding-top: 80px;
                 padding-bottom: 30px;
             }
+        }
+
+        .navbar {
+            background-color: var(--navbar-bg) !important;
+        }
+
+        .navbar-brand, .nav-link {
+            color: var(--text-color) !important;
         }
 
         /* --------------------- Hero section ---------------- */
@@ -81,6 +108,8 @@
         }
         .hero-section {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero_section.png') no-repeat 160% 10%/80%;
+            /* background: url('hero_section.png') no-repeat 160% 10%/80%; */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero_section.png') no-repeat 160% 10%/80%;
             text-align: center;
         }
 
@@ -89,7 +118,7 @@
         .project-card {
             transition: transform 0.3s ease;
             background-color: var(--dark-bg);
-            color: white;
+            color: var(--text-color);
             border-color: var(--dark-bg);
             border-radius: 10px;
         }
@@ -100,7 +129,11 @@
             width: 100%;
             height: 100px;
             padding: 15px;
-        }     
+        }  
+
+        .card-body {
+            color: var(--text-color);
+        }
 
         /* --------------------- Skills section ---------------- */
 
@@ -115,6 +148,7 @@
             text-align: center;
             height: 100%;
             transition: transform 0.3s;
+            color: var(--text-color);
         }
         
         .skill-card:hover {
@@ -145,9 +179,9 @@
         /* --------------------- contact section ---------------- */
 
         .contact-section {
-            background-color: #2a2a2a;
+            background-color: var(--card-bg);
             padding: 60px 0;
-            color: var(--icon-bg);
+            color: var(--text-color);
         }
 
         .contact-title {
@@ -187,7 +221,7 @@
         }
 
         .contact-card {
-            background-color: #333;
+            background-color: var(--dark-bg);
             padding: 15px 30px;
             border-radius: 8px;
             display: flex;
@@ -195,6 +229,8 @@
             gap: 10px;
             min-width: 250px;
             transition: transform 0.3s ease;
+            border: 1px solid #333;
+
         }
 
         .contact-card:hover {
@@ -202,7 +238,7 @@
         }
 
         .contact-card i {
-            color: var(--icon-bg);
+            color: var(--text-color);
             font-size: 1.2rem;
         }
 
@@ -219,7 +255,7 @@
         }
 
         .social-links a {
-            color: var(--icon-bg);
+            color: var(--text-color);
             font-size: 1.5rem;
             transition: color 0.3s ease;
         }
@@ -344,6 +380,26 @@
             background-color: black;
             clip-path: polygon(25% 50%, 0% 0%, 0% 100%);
         }
+               
+    /* --------------------- Theme toggle button ---------------- */
+    .theme-switch {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 1000;
+        background: var(--primary-color);
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        color: var(--dark-bg);
+        transition: all 0.3s ease;
+    }   
     </style>
 </head>
 <body>
@@ -586,6 +642,9 @@
             <p class="mb-0">© 2024 Punith B Chandakavate. All rights reserved.</p>
         </div>
     </footer>
+    <button class="theme-switch" onclick="toggleTheme()">
+        <i class="fas fa-sun"></i>
+    </button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -627,6 +686,32 @@
             });
         }
         renderTimeline();
+    </script>
+    <script>
+        // Theme Toggle Function
+        function toggleTheme() {
+            const root = document.documentElement;
+            const icon = document.querySelector('.theme-switch i');
+            
+            const currentMode = root.getAttribute('data-mode');
+            const newMode = currentMode === 'dark' ? 'light' : 'dark';
+            
+            root.setAttribute('data-mode', newMode);
+            icon.classList.replace(
+                newMode === 'dark' ? 'fa-moon' : 'fa-sun',
+                newMode === 'dark' ? 'fa-sun' : 'fa-moon'
+            );
+            localStorage.setItem('theme-mode', newMode);
+        }
+
+        // Initialize theme
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedMode = localStorage.getItem('theme-mode') || 'dark';
+            const root = document.documentElement;
+            const icon = document.querySelector('.theme-switch i');
+            root.setAttribute('data-mode', savedMode);
+            icon.classList.add(savedMode === 'dark' ? 'fa-sun' : 'fa-moon');
+        });
     </script>
 </body>
 </html>
