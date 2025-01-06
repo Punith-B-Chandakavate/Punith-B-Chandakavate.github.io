@@ -16,6 +16,10 @@
             --dark-bg: #1a1a1a;
             --card-bg: #2a2a2a;
             --icon-bg: white;
+            --white-bg: white;
+            --border-colour: #333;
+            --charcoal-gray: #4a4a4a;
+            
         }
 
         /* Theme variables for light/dark mode */
@@ -28,6 +32,10 @@
             --text-color: #333333;
             --navbar-bg: #ffffff;
             --exp-year-bg: #cccccc;
+            --company-colour: #4a4a4a;
+            --exp-content-colour: #555555;
+
+            
         }
 
         /* Dark theme variables */
@@ -38,6 +46,8 @@
             --text-color: white;
             --navbar-bg: #1a1a1a;
             --exp-year-bg: #4a4a4a;
+            --company-colour: #cccccc;
+            --exp-content-colour: #b0b0b0;
         }
        
         body {
@@ -71,11 +81,20 @@
         }
 
         .navbar {
-            background-color: var(--navbar-bg) !important;
+            background-color: transparent !important;
+        }
+
+        .navbar-brand, .nav-link {
+            transition: color 0.3s ease;
         }
 
         .navbar-brand, .nav-link {
             color: var(--text-color) !important;
+        }
+
+        .navbar.home-active .navbar-brand,
+        .navbar.home-active .nav-link {
+            color: var(--white-bg) !important;
         }
 
         /* --------------------- Hero section ---------------- */
@@ -110,9 +129,9 @@
         }
         .hero-section {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero_section.png') no-repeat 160% 10%/80%;
-            /* background: url('hero_section.png') no-repeat 160% 10%/80%; */
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero_section.png') no-repeat 160% 10%/80%;
             text-align: center;
+            color: var(--white-bg);
+            background-color: #1a1a1a !important;
         }
 
         /* --------------------- project section ---------------- */
@@ -231,7 +250,7 @@
             gap: 10px;
             min-width: 250px;
             transition: transform 0.3s ease;
-            border: 1px solid #333;
+            border: 1px solid var(--border-colour);
 
         }
 
@@ -324,7 +343,7 @@
             top: 30px;
             height: calc(100% + 12px); /* Extend the line to connect to the next item */
             width: 2px;
-            background-color: #4a4a4a;
+            background-color: var(--charcoal-gray);
         }
 
         .experience-circle {
@@ -349,13 +368,13 @@
 
         .experience-content .company {
             font-size: 18px;
-            color: #cccccc;
+            color: var(--company-colour);
             margin: 0 0 16px 0;
         }
 
         .experience-content .description {
             line-height: 1.6;
-            color: #b0b0b0;
+            color:var(--exp-content-colour);
             margin: 0;
         }
 
@@ -714,5 +733,54 @@
             icon.classList.add(savedMode === 'dark' ? 'fa-sun' : 'fa-moon');
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.querySelector('.navbar');
+            const homeSection = document.getElementById('home');
+            
+            // Create intersection observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // If home section is more than 50% visible
+                    if (entry.target.id === 'home') {
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                            navbar.classList.add('home-active');
+                        } else {
+                            navbar.classList.remove('home-active');
+                        }
+                    }
+                });
+            }, {
+                // Options for the observer
+                threshold: [0, 0.5, 1],
+                rootMargin: '-20% 0px -20% 0px' // Adds a bit of buffer zone
+            });
+        
+            // Start observing home section
+            if (homeSection) {
+                observer.observe(homeSection);
+            }
+            
+            // Fallback scroll handler for smoother transitions
+            let ticking = false;
+            document.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        const homeRect = homeSection.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        
+                        // Check if home section is in viewport
+                        if (homeRect.top < windowHeight * 0.6 && homeRect.bottom > windowHeight * 0.4) {
+                            navbar.classList.add('home-active');
+                        } else {
+                            navbar.classList.remove('home-active');
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        });
+        </script>
 </body>
 </html>
