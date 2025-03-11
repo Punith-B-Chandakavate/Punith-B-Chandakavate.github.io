@@ -80,6 +80,11 @@
                 padding-bottom: 30px;
             }
         }
+        @media (max-width: 375px) and (min-width: 320px) {
+            .name_size {
+                font-size: 11px;
+            }
+        }
 
         .navbar {
             background-color: transparent !important;
@@ -305,6 +310,17 @@
                 width: 100%;
             }
         }
+
+        @media (max-width: 375px) and (min-width: 320px) {
+            .contact-title::before {
+                right: 60%;
+                margin-right: 25%;
+            }
+            .contact-title::after {
+                left: 60%;
+                margin-left: 25%;
+            }
+        }
         
         /* --------------------- Experience section ---------------- */
 
@@ -429,7 +445,7 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="profile_photo.webp" alt="Punith B Chandakavate" style="height: 30px; margin-right: 10px;">
-                Punith B Chandakavate
+                <span class="name_size">Punith B Chandakavate</span>
               </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -631,17 +647,17 @@
                 <div class="contact-info">
                     <div class="contact-card">
                         <i class="fas fa-envelope"></i>
-                        <span>puneetchandakawathe@gmail.com</span>
+                        <span class="name_size">puneetchandakawathe@gmail.com</span>
                     </div>
                     
                     <div class="contact-card">
                         <i class="fas fa-phone"></i>
-                        <span>(+91) 735-340-3383</span>
+                        <span class="name_size">(+91) 735-340-3383</span>
                     </div>
                     
                     <div class="contact-card">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Bengaluru, India</span>
+                        <span class="name_size">Bengaluru, India</span>
                     </div>
                 </div>
     
