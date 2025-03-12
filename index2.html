@@ -804,6 +804,31 @@
       </div>
     </footer>
     <script>
+        // Smooth scroll for all navigation links (desktop and mobile)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const headerHeight = document.querySelector('nav').offsetHeight;
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - headerHeight,
+                        behavior: 'smooth'
+                    });
+
+                    // Update URL hash without jumping
+                    history.pushState(null, null, targetId);
+                }
+
+                // Close mobile menu if it's open
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+
       document.addEventListener("DOMContentLoaded", function () {
         const themeToggle = document.getElementById("theme-toggle");
         const html = document.documentElement;
