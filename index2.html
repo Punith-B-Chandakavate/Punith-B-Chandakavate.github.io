@@ -447,11 +447,12 @@
         <div class="max-w-4xl mx-auto">
           <style>
             .skill-icon {
-            transition: transform 0.3s ease-in-out;
-            transform: translateY(0);
+                transition: transform 0.3s ease-in-out;
+                transform: scale(1);
+                cursor: pointer;
             }
             .skill-icon:hover {
-            animation: skillBounce 0.5s ease infinite;
+                transform: scale(1.2);
             }
             @keyframes skillBounce {
             0%, 100% { transform: translateY(0); }
@@ -529,7 +530,7 @@
                   <span class="font-medium flex items-center gap-2">
                     Python
                   </span>
-                  <span class="text-gray-600 dark:text-gray-400">95%</span>
+                  <span class="text-gray-600 dark:text-gray-400" data-percent="95">0%</span>
                 </div>
                 <div class="h-2 bg-gray-200 rounded-full relative">
                   <div
@@ -537,8 +538,8 @@
                     data-percent="95"
                   ></div>
                   <span
-                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded"
-                    >95%</span
+                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded" data-percent="95"
+                    >0%</span
                   >
                 </div>
               </div>
@@ -547,7 +548,7 @@
                   <span class="font-medium flex items-center gap-2">
                     Django
                   </span>
-                  <span class="text-gray-600 dark:text-gray-400">90%</span>
+                  <span class="text-gray-600 dark:text-gray-400" data-percent="90">0%</span>
                 </div>
                 <div class="h-2 bg-gray-200 rounded-full relative">
                   <div
@@ -555,8 +556,8 @@
                     data-percent="90"
                   ></div>
                   <span
-                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded"
-                    >90%</span
+                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded" data-percent="90"
+                    >0%</span
                   >
                 </div>
               </div>
@@ -565,7 +566,7 @@
                   <span class="font-medium flex items-center gap-2">
                     HTML/CSS
                   </span>
-                  <span class="text-gray-600 dark:text-gray-400">85%</span>
+                  <span class="text-gray-600 dark:text-gray-400" data-percent="85">0%</span>
                 </div>
                 <div class="h-2 bg-gray-200 rounded-full relative">
                   <div
@@ -573,8 +574,8 @@
                     data-percent="85"
                   ></div>
                   <span
-                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded"
-                    >85%</span
+                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded" data-percent="85"
+                    >0%</span
                   >
                 </div>
               </div>
@@ -585,7 +586,7 @@
                   <span class="font-medium flex items-center gap-2">
                     JavaScript
                   </span>
-                  <span class="text-gray-600 dark:text-gray-400">80%</span>
+                  <span class="text-gray-600 dark:text-gray-400" data-percent="80">0%</span>
                 </div>
                 <div class="h-2 bg-gray-200 rounded-full relative">
                   <div
@@ -593,8 +594,8 @@
                     data-percent="80"
                   ></div>
                   <span
-                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded"
-                    >80%</span
+                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded" data-percent="80"
+                    >0%</span
                   >
                 </div>
               </div>
@@ -603,7 +604,7 @@
                   <span class="font-medium flex items-center gap-2">
                     PostgreSQL
                   </span>
-                  <span class="text-gray-600 dark:text-gray-400">85%</span>
+                  <span class="text-gray-600 dark:text-gray-400" data-percent="85">0%</span>
                 </div>
                 <div class="h-2 bg-gray-200 rounded-full relative">
                   <div
@@ -611,8 +612,8 @@
                     data-percent="85"
                   ></div>
                   <span
-                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded"
-                    >85%</span
+                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded" data-percent="85"
+                    >0%</span
                   >
                 </div>
               </div>
@@ -621,7 +622,7 @@
                   <span class="font-medium flex items-center gap-2">
                     Git/GitHub/GitLab
                   </span>
-                  <span class="text-gray-600 dark:text-gray-400">90%</span>
+                  <span class="text-gray-600 dark:text-gray-400" data-percent="90">0%</span>
                 </div>
                 <div class="h-2 bg-gray-200 rounded-full relative">
                   <div
@@ -629,8 +630,8 @@
                     data-percent="90"
                   ></div>
                   <span
-                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded"
-                    >90%</span
+                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded skill-persent" data-percent="90"
+                    >0%</span
                   >
                 </div>
               </div>
@@ -938,22 +939,63 @@
           }, 3000);
           contactForm.reset();
         });
+        
+        function animatePercentage(element, targetPercent) {
+            let start = null;
+            const duration = 1000;
+
+            function updateCount(timestamp) {
+                if (!start) start = timestamp;
+                const progress = timestamp - start;
+                const current = Math.min((progress / duration) * targetPercent, targetPercent);
+                element.textContent = `${Math.round(current)}%`;
+                
+                if (progress < duration) {
+                    requestAnimationFrame(updateCount);
+                } else {
+                    element.textContent = `${targetPercent}%`;
+                }
+            }
+
+            requestAnimationFrame(updateCount);
+        }
+
         const skillObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const targetPercent = entry.target.dataset.percent;
-                    entry.target.style.width = `${targetPercent}%`;
-                } else {
-                    entry.target.style.width = "0%";
-                }
+                    const skillBar = entry.target;
+                    const targetPercent = parseInt(skillBar.dataset.percent);
+                    const container = skillBar.closest('div.bg-gray-200').parentElement;
+                    
+                    if (entry.isIntersecting) {
+                        // Animate bar width
+                        skillBar.style.width = `${targetPercent}%`;
+                        
+                        // Animate percentage numbers
+                        container.querySelectorAll('[data-percent]').forEach(element => {
+                            if(element !== skillBar) { // Exclude the skill bar itself
+                                animatePercentage(element, targetPercent);
+                            }
+                        });
+                    } else {
+                        // Reset animations
+                        skillBar.style.width = "0%";
+                        container.querySelectorAll('[data-percent]').forEach(element => {
+                            if(element !== skillBar) {
+                                element.textContent = '0%';
+                            }
+                        });
+                    }
                 });
             },
-            { threshold: 0.5 }
+            { threshold: 0.25 }
         );
 
+        // Initialize observer for all skill bars
         document.querySelectorAll('.skill-bar').forEach(bar => {
-        skillObserver.observe(bar);
+            // Set initial width to 0%
+            bar.style.width = '0%';
+            skillObserver.observe(bar);
         });
       });
     </script>
