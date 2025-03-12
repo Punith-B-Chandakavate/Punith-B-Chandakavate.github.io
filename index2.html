@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Thomas Anderson</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+            //   primary: ({ opacityValue }) => {
+            //     if (opacityValue === undefined) {
+            //       return "rgb(59 130 246)";
+            //     }
+            //     return `rgb(59 130 246 / ${opacityValue})`;
+            //   },
+              "primary-dark": ({ opacityValue }) => {
+                if (opacityValue === undefined) {
+                  return "rgb(59 130 246)";
+                }
+                return `rgb(59 130 246 / ${opacityValue})`;
+              },
+              secondary: "#60A5FA",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      .skill-bar {
+        transition: width 1s ease-in-out;
+      }
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(10px); }
+        100% { transform: translateY(0px); }
+      }
+      .project-card {
+        animation: float 3s ease-in-out infinite;
+        animation-play-state: paused;
+      }
+      .project-card:hover {
+        animation-play-state: running;
+      }
+      :root {
+        --primary-color: rgb(14 165 233);
+      }
+      .dark {
+        --primary-color: rgb(245 158 11);
+      }
+      .text-primary {
+        color: var(--primary-color);
+      }
+      .bg-primary {
+        background-color: var(--primary-color);
+      }
+      .border-primary {
+        border-color: var(--primary-color);
+      }
+      .hover\:bg-primary:hover {
+        background-color: var(--primary-color);
+      }
+      .hover\:text-primary:hover {
+        color: var(--primary-color);
+      }
+      .focus\:ring-primary:focus {
+        --tw-ring-color: var(--primary-color);
+      }
+      .focus\:border-primary:focus {
+        border-color: var(--primary-color);
+      }
+      .nav-link.active {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+      .mobile-menu {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .mobile-menu.active {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      *, *::before, *::after {
+        transition-property: background-color, border-color, color, fill, stroke, transform;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-['Inter']"
+  >
+    <nav
+      class="fixed w-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm z-50 border-b border-gray-200 dark:border-gray-700"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full overflow-hidden">
+              <img
+                src="https://public.readdy.ai/ai/img_res/e10b09dea3b91f9d958dda50a464ea26.jpg"
+                alt="Thomas Anderson"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <span class="text-lg font-medium text-gray-900 dark:text-gray-100"
+              >Thomas Anderson</span
+            >
+          </div>
+          <div class="hidden md:flex items-center space-x-8 ml-auto">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#contact" class="nav-link">Contact</a>
+          </div>
+          <button
+            id="mobile-menu-button"
+            class="md:hidden text-gray-500 hover:text-gray-600"
+          >
+            <i class="ri-menu-line ri-2x"></i>
+          </button>
+        </div>
+      </div>
+      <div
+        class="mobile-menu md:hidden fixed top-16 left-0 right-0 bg-gray-800 border-b border-gray-700 z-40"
+      >
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a
+            href="#home"
+            class="block px-3 py-2 rounded-md text-base font-medium nav-link active text-gray-100 hover:bg-gray-700"
+            >Home</a
+          >
+          <a
+            href="#projects"
+            class="block px-3 py-2 rounded-md text-base font-medium nav-link text-gray-100 hover:bg-gray-700"
+            >Projects</a
+          >
+          <a
+            href="#about"
+            class="block px-3 py-2 rounded-md text-base font-medium nav-link text-gray-100 hover:bg-gray-700"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="block px-3 py-2 rounded-md text-base font-medium nav-link text-gray-100 hover:bg-gray-700"
+            >Skills</a
+          >
+          <a
+            href="#contact"
+            class="block px-3 py-2 rounded-md text-base font-medium nav-link text-gray-100 hover:bg-gray-700"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+    <section id="home" class="pt-16 md:pt-0">
+      <div class="relative min-h-screen flex items-center">
+        <div class="absolute inset-0 z-0">
+          <img
+            src="https://public.readdy.ai/ai/img_res/9d7a7c2f39f3141ecc513afc16f5711b.jpg"
+            class="w-full h-full object-cover object-center opacity-10"
+            alt="Background"
+          />
+        </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="max-w-4xl">
+            <h1
+              class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-6"
+            >
+              Hi, I'm Punith B Chandakavate
+              <span class="block text-primary mt-2">Full Stack Developer</span>
+            </h1>
+            <p
+              class="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 mb-8"
+            >
+              Crafting digital experiences through clean code and creative
+              solutions
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="#projects"
+                class="bg-primary text-white px-8 py-3 rounded-button text-lg font-medium hover:bg-primary/90 transition-colors cursor-pointer"
+                >View My Work</a
+              >
+              <a
+                href="#contact"
+                class="border-2 border-primary text-primary px-8 py-3 rounded-button text-lg font-medium hover:bg-primary/5 transition-colors cursor-pointer"
+                >Contact Me</a
+              >
+              <a
+                href="/path/to/cv.pdf"
+                download
+                class="flex items-center gap-2 bg-gray-800 text-white px-8 py-3 rounded-button text-lg font-medium hover:bg-gray-700 transition-colors cursor-pointer"
+              >
+                <i class="ri-download-2-line"></i>
+                <span>Download CV</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+        >
+          <i class="ri-arrow-down-line ri-2x text-primary"></i>
+        </div>
+      </div>
+    </section>
+    <section id="projects" class="py-20 bg-gray-100 dark:bg-gray-800">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          Featured Projects
+        </h2>
+        <p
+          class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto"
+        >
+          Here are some of my recent works that showcase my skills and
+          experience in web development
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <script>
+            document.querySelectorAll(".project-card").forEach((card) => {
+              card.addEventListener("mouseleave", () => {
+                card.style.transform = "translateY(0)";
+              });
+            });
+          </script>
+          <div
+            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-105"
+          >
+            <img
+              src="https://public.readdy.ai/ai/img_res/fba33269c638841297003197d2e69080.jpg"
+              class="w-full h-48 object-cover"
+              alt="E-commerce Project"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">E-commerce Platform</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
+                A full-featured online shopping platform with real-time
+                inventory management
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+                  >React</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm"
+                  >Node.js</span
+                >
+                <span
+                  class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm"
+                  >MongoDB</span
+                >
+              </div>
+              <a
+                href="#"
+                class="text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer"
+                >View Project →</a
+              >
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-105"
+          >
+            <img
+              src="https://public.readdy.ai/ai/img_res/3f70031331cb821d475f15044cf07b08.jpg"
+              class="w-full h-48 object-cover"
+              alt="Dashboard Project"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Analytics Dashboard</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
+                Real-time analytics dashboard with customizable widgets and
+                reports
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm"
+                  >Vue.js</span
+                >
+                <span
+                  class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm"
+                  >Firebase</span
+                >
+                <span
+                  class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm"
+                  >D3.js</span
+                >
+              </div>
+              <a
+                href="#"
+                class="text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer"
+                >View Project →</a
+              >
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-105"
+          >
+            <img
+              src="https://public.readdy.ai/ai/img_res/4a7ec3690cfef27794a37655f23d7201.jpg"
+              class="w-full h-48 object-cover"
+              alt="Fitness App Project"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Fitness Tracking App</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
+                Mobile app for tracking workouts and maintaining fitness goals
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm"
+                  >React Native</span
+                >
+                <span
+                  class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm"
+                  >GraphQL</span
+                >
+                <span
+                  class="px-3 py-1 bg-pink-100 text-pink-800 rounded-full text-sm"
+                  >AWS</span
+                >
+              </div>
+              <a
+                href="#"
+                class="text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer"
+                >View Project →</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="relative">
+              <img
+                src="https://public.readdy.ai/ai/img_res/b22713f39b9a452d88b813093b52e415.jpg"
+                class="w-full h-auto rounded-lg shadow-lg"
+                alt="Profile Photo"
+              />
+            </div>
+            <div>
+              <h2 class="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
+              <p class="text-gray-600 dark:text-gray-400 mb-6">
+                With over 8 years of experience in web development, I specialize
+                in creating scalable and efficient solutions for complex
+                problems. My journey in technology began at MIT, where I
+                developed a passion for clean code and user-centric design.
+              </p>
+              <p class="text-gray-600 dark:text-gray-400 mb-8">
+                I've worked with startups and enterprise companies, helping them
+                build robust applications and improve their development
+                processes. When I'm not coding, I contribute to open-source
+                projects and mentor aspiring developers.
+              </p>
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full"
+                  >
+                    <i class="ri-code-line ri-lg text-primary"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold">Full Stack Development</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                      End-to-end application development
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full"
+                  >
+                    <i class="ri-layout-line ri-lg text-primary"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold">UI/UX Design</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                      Creating intuitive user experiences
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full"
+                  >
+                    <i class="ri-cloud-line ri-lg text-primary"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold">Cloud Architecture</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                      Scalable cloud solutions
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="skills" class="py-20 bg-gray-100 dark:bg-gray-800">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          Technical Skills
+        </h2>
+        <p
+          class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto"
+        >
+          A comprehensive overview of my technical expertise and professional
+          capabilities
+        </p>
+        <div class="max-w-4xl mx-auto">
+          <style>
+            .skill-icon {
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(0);
+            }
+            .skill-icon:hover {
+            animation: skillBounce 0.5s ease infinite;
+            }
+            @keyframes skillBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            }
+          </style>
+          <div class="grid grid-cols-3 md:grid-cols-6 gap-8 mb-12">
+            <img
+              src="https://skillicons.dev/icons?i=python"
+              alt="Python"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=django"
+              alt="Django"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=html"
+              alt="HTML"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=css"
+              alt="CSS"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=js"
+              alt="JavaScript"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=postgres"
+              alt="PostgreSQL"
+              class="w-full skill-icon"
+            />
+          </div>
+          <div class="grid grid-cols-3 md:grid-cols-6 gap-8 mb-12">
+            <img
+              src="https://skillicons.dev/icons?i=postman"
+              alt="Postman"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=vscode"
+              alt="VS Code"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=pycharm"
+              alt="PyCharm"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=git"
+              alt="Git"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=github"
+              alt="GitHub"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=gitlab"
+              alt="GitLab"
+              class="w-full skill-icon"
+            />
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium flex items-center gap-2">
+                    Python
+                  </span>
+                  <span class="text-gray-600 dark:text-gray-400">95%</span>
+                </div>
+                <div class="h-2 bg-gray-200 rounded-full relative">
+                  <div
+                    class="h-2 bg-primary rounded-full skill-bar"
+                    data-percent="95"
+                  ></div>
+                  <span
+                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded"
+                    >95%</span
+                  >
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium flex items-center gap-2">
+                    Django
+                  </span>
+                  <span class="text-gray-600 dark:text-gray-400">90%</span>
+                </div>
+                <div class="h-2 bg-gray-200 rounded-full relative">
+                  <div
+                    class="h-2 bg-primary rounded-full skill-bar"
+                    data-percent="90"
+                  ></div>
+                  <span
+                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded"
+                    >90%</span
+                  >
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium flex items-center gap-2">
+                    HTML/CSS
+                  </span>
+                  <span class="text-gray-600 dark:text-gray-400">85%</span>
+                </div>
+                <div class="h-2 bg-gray-200 rounded-full relative">
+                  <div
+                    class="h-2 bg-primary rounded-full skill-bar"
+                    data-percent="85"
+                  ></div>
+                  <span
+                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded"
+                    >85%</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium flex items-center gap-2">
+                    JavaScript
+                  </span>
+                  <span class="text-gray-600 dark:text-gray-400">80%</span>
+                </div>
+                <div class="h-2 bg-gray-200 rounded-full relative">
+                  <div
+                    class="h-2 bg-primary rounded-full skill-bar"
+                    data-percent="80"
+                  ></div>
+                  <span
+                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded"
+                    >80%</span
+                  >
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium flex items-center gap-2">
+                    PostgreSQL
+                  </span>
+                  <span class="text-gray-600 dark:text-gray-400">85%</span>
+                </div>
+                <div class="h-2 bg-gray-200 rounded-full relative">
+                  <div
+                    class="h-2 bg-primary rounded-full skill-bar"
+                    data-percent="85"
+                  ></div>
+                  <span
+                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded"
+                    >85%</span
+                  >
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium flex items-center gap-2">
+                    Git/GitHub/GitLab
+                  </span>
+                  <span class="text-gray-600 dark:text-gray-400">90%</span>
+                </div>
+                <div class="h-2 bg-gray-200 rounded-full relative">
+                  <div
+                    class="h-2 bg-primary rounded-full skill-bar"
+                    data-percent="90"
+                  ></div>
+                  <span
+                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded"
+                    >90%</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+            Get in Touch
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400 text-center mb-12">
+            Have a project in mind? Let's discuss how we can work together
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+              <form id="contact-form" class="space-y-6">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="w-full px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-button focus:ring-2 focus:ring-primary focus:border-primary"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="w-full px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-button focus:ring-2 focus:ring-primary focus:border-primary"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="message"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    >Message</label
+                  >
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    class="w-full px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-button focus:ring-2 focus:ring-primary focus:border-primary"
+                    required
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="w-full bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90 transition-colors"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+            <div class="space-y-8">
+              <div>
+                <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
+                <div class="space-y-4">
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full"
+                    >
+                      <i class="ri-mail-line text-primary"></i>
+                    </div>
+                    <div>
+                      <p class="text-gray-600 dark:text-gray-400">Email</p>
+                      <a
+                        href="mailto:thomas.anderson@example.com"
+                        class="text-primary hover:text-primary/80"
+                        >thomas.anderson@example.com</a
+                      >
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full"
+                    >
+                      <i class="ri-phone-line text-primary"></i>
+                    </div>
+                    <div>
+                      <p class="text-gray-600 dark:text-gray-400">Phone</p>
+                      <a
+                        href="tel:+1234567890"
+                        class="text-primary hover:text-primary/80"
+                        >+1 (234) 567-890</a
+                      >
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full"
+                    >
+                      <i class="ri-map-pin-line text-primary"></i>
+                    </div>
+                    <div>
+                      <p class="text-gray-600 dark:text-gray-400">Location</p>
+                      <p class="text-primary">San Francisco, CA</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-4">Follow Me</h3>
+                <div class="flex gap-4">
+                  <a
+                    href="#"
+                    class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
+                  >
+                    <i class="ri-github-line text-primary"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
+                  >
+                    <i class="ri-linkedin-line text-primary"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
+                  >
+                    <i class="ri-twitter-x-line text-primary"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
+                  >
+                    <i class="ri-dribbble-line text-primary"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer
+      class="relative bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white py-12"
+    >
+      <div
+        id="theme-toggle"
+        class="fixed bottom-4 right-4 w-12 h-12 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors shadow-lg z-50"
+      >
+        <i class="ri-sun-line dark:hidden text-xl"></i>
+        <i class="ri-moon-line hidden dark:block text-xl"></i>
+      </div>
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div>
+            <span class="text-2xl font-['Pacifico']">Portfolio</span>
+          </div>
+          <div class="text-gray-400">
+            <p>&copy; 2025 Thomas Anderson. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggle = document.getElementById("theme-toggle");
+        const html = document.documentElement;
+        const sunIcon = themeToggle.querySelector(".ri-sun-line");
+        const moonIcon = themeToggle.querySelector(".ri-moon-line");
+        function setTheme(isDark) {
+          if (isDark) {
+            html.classList.add("dark");
+            sunIcon.classList.add("hidden");
+            moonIcon.classList.remove("hidden");
+          } else {
+            html.classList.remove("dark");
+            sunIcon.classList.remove("hidden");
+            moonIcon.classList.add("hidden");
+          }
+          localStorage.theme = isDark ? "dark" : "light";
+        }
+        // Check for saved theme preference, otherwise use system preference
+        const prefersDark =
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+        setTheme(prefersDark);
+        // Theme toggle button click handler
+        themeToggle.addEventListener("click", () => {
+          const isDark = !html.classList.contains("dark");
+          setTheme(isDark);
+          // Add animation class
+          themeToggle.classList.add("animate-spin");
+          setTimeout(() => {
+            themeToggle.classList.remove("animate-spin");
+          }, 300);
+        });
+        // Listen for system theme changes
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", (e) => {
+            if (!localStorage.theme) {
+              setTheme(e.matches);
+            }
+          });
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.querySelector(".mobile-menu");
+        const navLinks = document.querySelectorAll(".nav-link");
+        const contactForm = document.getElementById("contact-form");
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("active");
+        });
+        document.querySelectorAll(".mobile-menu .nav-link").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.remove("active");
+            const targetId = link.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        });
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            navLinks.forEach((l) => l.classList.remove("active"));
+            link.classList.add("active");
+            if (window.innerWidth < 768) {
+              mobileMenu.classList.remove("active");
+            }
+          });
+        });
+        const observerOptions = {
+          threshold: 0.5,
+        };
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute("id");
+              navLinks.forEach((link) => {
+                if (link.getAttribute("href") === `#${id}`) {
+                  link.classList.add("active");
+                } else {
+                  link.classList.remove("active");
+                }
+              });
+            }
+          });
+        }, observerOptions);
+        document.querySelectorAll("section").forEach((section) => {
+          observer.observe(section);
+        });
+        contactForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const formData = new FormData(contactForm);
+          const data = Object.fromEntries(formData);
+          const notification = document.createElement("div");
+          notification.className =
+            "fixed left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-all duration-500";
+          notification.textContent = "Message sent successfully!";
+          notification.style.top = "-100px";
+          document.body.appendChild(notification);
+          // Slide down from top
+          setTimeout(() => {
+            notification.style.top = "32px";
+          }, 100);
+          // Start sliding up after delay
+          setTimeout(() => {
+            notification.style.top = "-100px";
+            notification.style.opacity = "0";
+            setTimeout(() => notification.remove(), 500);
+          }, 3000);
+          contactForm.reset();
+        });
+        const skillObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const targetPercent = entry.target.dataset.percent;
+                    entry.target.style.width = `${targetPercent}%`;
+                } else {
+                    entry.target.style.width = "0%";
+                }
+                });
+            },
+            { threshold: 0.5 }
+        );
+
+        document.querySelectorAll('.skill-bar').forEach(bar => {
+        skillObserver.observe(bar);
+        });
+      });
+    </script>
+  </body>
+</html>
