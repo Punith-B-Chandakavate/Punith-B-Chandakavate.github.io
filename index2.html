@@ -966,35 +966,27 @@
                     const skillBar = entry.target;
                     const targetPercent = parseInt(skillBar.dataset.percent);
                     const container = skillBar.closest('div.bg-gray-200').parentElement;
-                    
-                    if (entry.isIntersecting) {
-                        // Animate bar width
+
+                    if (entry.isIntersecting && !skillBar.dataset.animated) {
+                        skillBar.dataset.animated = 'true';
                         skillBar.style.width = `${targetPercent}%`;
-                        
-                        // Animate percentage numbers
-                        container.querySelectorAll('[data-percent]').forEach(element => {
-                            if(element !== skillBar) { // Exclude the skill bar itself
-                                animatePercentage(element, targetPercent);
-                            }
-                        });
-                    } else {
-                        // Reset animations
-                        skillBar.style.width = "0%";
                         container.querySelectorAll('[data-percent]').forEach(element => {
                             if(element !== skillBar) {
-                                element.textContent = '0%';
+                                animatePercentage(element, targetPercent);
                             }
                         });
                     }
                 });
             },
-            { threshold: 0.25 }
+            { 
+                threshold: 0.25,
+                rootMargin: '0px' 
+            }
         );
 
-        // Initialize observer for all skill bars
+        // Initialize skill bars
         document.querySelectorAll('.skill-bar').forEach(bar => {
-            // Set initial width to 0%
-            bar.style.width = '0%';
+            bar.style.width = '0%'; // Initial state
             skillObserver.observe(bar);
         });
       });
