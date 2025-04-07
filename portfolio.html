@@ -177,10 +177,10 @@
           </div>
           <div class="hidden md:flex items-center space-x-8 ml-auto">
             <a href="#home" class="nav-link active">Home</a>
-            <a href="#projects" class="nav-link">Projects</a>
             <a href="#about" class="nav-link">About</a>
-            <a href="#experience" class="nav-link">Experience</a>
             <a href="#skills" class="nav-link">Skills</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#projects" class="nav-link">Projects</a>
             <a href="#contact" class="nav-link">Contact</a>
           </div>
           <button
@@ -201,14 +201,14 @@
             >Home</a
           >
           <a
-            href="#projects"
-            class="block px-3 py-2 rounded-md text-base font-medium nav-link dark:text-gray-100 hover:bg-gray-700"
-            >Projects</a
-          >
-          <a
             href="#about"
             class="block px-3 py-2 rounded-md text-base font-medium nav-link dark:text-gray-100 hover:bg-gray-700"
             >About</a
+          >
+          <a
+            href="#skills"
+            class="block px-3 py-2 rounded-md text-base font-medium nav-link dark:text-gray-100 hover:bg-gray-700"
+            >Skills</a
           >
           <a
             href="#experience"
@@ -216,10 +216,10 @@
             >Experience</a
           >
           <a
-            href="#skills"
+            href="#projects"
             class="block px-3 py-2 rounded-md text-base font-medium nav-link dark:text-gray-100 hover:bg-gray-700"
-            >Skills</a
-          >
+            >Projects</a
+          >          
           <a
             href="#contact"
             class="block px-3 py-2 rounded-md text-base font-medium nav-link dark:text-gray-100 hover:bg-gray-700"
@@ -280,172 +280,7 @@
         </a>
       </div>
     </section>
-    <section id="projects" class="py-20 bg-gray-100 dark:bg-gray-800">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
-          Featured Projects
-        </h2>
-        <p
-          class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto"
-        >
-          Here are some of my recent works that showcase my skills and
-          experience in web development
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <script>
-            document.querySelectorAll(".project-card").forEach((card) => {
-              card.addEventListener("mouseleave", () => {
-                card.style.transform = "translateY(0)";
-              });
-            });
-          </script>
-          <div
-            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-105"
-          >
-            <img
-              src="images/AI_portfolio/Biotimecloud-V2.webp"
-              class="w-full h-48 object-cover"
-              alt="Cloud-Based Attendance Tracker Project"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">BiotimeCloud 2.0 Attendance Tracker Platform</h3>
-              <p class="text-gray-600 dark:text-gray-400 mb-4">
-                A platform for managing and analyzing biological data where I developed user-friendly features, ensured data integrity, and implemented a REST API for mobile functionality using optimal protocols for seamless data access.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
-                  >Python</span
-                >
-                <span
-                  class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm"
-                  >Django & DRF</span
-                >
-                <span
-                  class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm"
-                  >PostgreSQL</span
-                >
-              </div>
-              <a
-                href="https://biotimecloud.org/" target="_blank"
-                class="text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer"
-                >View Project →</a
-              >
-            </div>
-          </div>
-          <div
-            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-105"
-          >
-            <img
-              src="images/AI_portfolio/Intelligenttime.webp"
-              class="w-full h-48 object-cover"
-              alt="Dashboard Project"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">Intelligent-time Attendance Tracker Platform</h3>
-              <p class="text-gray-600 dark:text-gray-400 mb-4">
-                A time management application that helps users track their productivity and manage tasks effectively. My role involved implementing backend functionalities and optimizing database queries for better performance.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm"
-                  >Python</span
-                >
-                <span
-                  class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm"
-                  >Django & DRF</span
-                >
-                <span
-                  class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm"
-                  >PostgreSQL</span
-                >
-              </div>
-              <a
-                href="https://itimedev.minervaiot.com/" target="_blank"
-                class="text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer"
-                >View Project →</a
-              >
-            </div>
-          </div>
-          <div
-            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-105"
-          >
-            <img
-              src="images/AI_portfolio/EasyTimePro.webp"
-              class="w-full h-48 object-cover"
-              alt="Fitness App Project"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">EasyTimePro – Offline Attendance System</h3>
-              <p class="text-gray-600 dark:text-gray-400 mb-4">
-                A user-friendly time tracking tool aimed at freelancers and small businesses. I worked closely with a team of developers to ensure seamless integration of features and a smooth user experience.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm"
-                  >Python</span
-                >
-                <span
-                  class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm"
-                  >Django & DRF</span
-                >
-                <span
-                  class="px-3 py-1 bg-pink-100 text-pink-800 rounded-full text-sm"
-                  >PostgreSQL</span
-                >
-                <span
-                  class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
-                  >SQL Server</span
-                >
-                <span
-                  class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm"
-                  >Oracle Database</span
-                >
-                <span
-                  class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm"
-                  >MySql</span
-                >
-              </div>
-              <a
-                href="https://www.zkteco.in/time-attendance-software/easy-time-pro" target="_blank"
-                class="text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer"
-                >View Project →</a
-              >
-            </div>
-          </div>
-          <div
-            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-105"
-          >
-            <img
-              src="images/AI_portfolio/portfolio.webp"
-              class="w-full h-48 object-cover"
-              alt="Fitness App Project"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">Portfolio</h3>
-              <p class="text-gray-600 dark:text-gray-400 mb-4">
-                Apart from my AI-generated portfolio, I’ve created a custom-built version to showcase my web development skills.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm"
-                  >HTML</span
-                >
-                <span
-                  class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm"
-                  >CSS</span
-                >
-              </div>
-              <a
-                href="index.html"
-                class="text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer"
-                >View Project →</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
     <section id="about" class="py-20 bg-white dark:bg-gray-900">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-6xl mx-auto">
@@ -500,31 +335,6 @@
                     </p>
                   </div>
                 </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience" class="py-20 bg-white dark:bg-gray-900">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
-          Work Experience
-        </h2>
-        <p
-          class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto"
-        >
-          My professional journey and career highlights
-        </p>
-        <div class="max-w-4xl mx-auto">
-          <div class="relative">
-            <!-- Timeline line -->
-            <div
-              class="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-700 transform md:translate-x-px"
-            ></div>
-
-            <div id="experience-container" class="relative space-y-8">
-              <!-- Experience items will be dynamically loaded here -->
             </div>
           </div>
         </div>
@@ -738,6 +548,199 @@
         </div>
       </div>
     </section>
+
+    <section id="experience" class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          Work Experience
+        </h2>
+        <p
+          class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto"
+        >
+          My professional journey and career highlights
+        </p>
+        <div class="max-w-4xl mx-auto">
+          <div class="relative">
+            <!-- Timeline line -->
+            <div
+              class="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-700 transform md:translate-x-px"
+            ></div>
+
+            <div id="experience-container" class="relative space-y-8">
+              <!-- Experience items will be dynamically loaded here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-gray-100 dark:bg-gray-800">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          Featured Projects
+        </h2>
+        <p
+          class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto"
+        >
+          Here are some of my recent works that showcase my skills and
+          experience in web development
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <script>
+            document.querySelectorAll(".project-card").forEach((card) => {
+              card.addEventListener("mouseleave", () => {
+                card.style.transform = "translateY(0)";
+              });
+            });
+          </script>
+          <div
+            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-105"
+          >
+            <img
+              src="images/AI_portfolio/Biotimecloud-V2.webp"
+              class="w-full h-48 object-cover"
+              alt="Cloud-Based Attendance Tracker Project"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">BiotimeCloud 2.0 Attendance Tracker Platform</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
+                A platform for managing and analyzing biological data where I developed user-friendly features, ensured data integrity, and implemented a REST API for mobile functionality using optimal protocols for seamless data access.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+                  >Python</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm"
+                  >Django & DRF</span
+                >
+                <span
+                  class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm"
+                  >PostgreSQL</span
+                >
+              </div>
+              <a
+                href="https://biotimecloud.org/" target="_blank"
+                class="text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer"
+                >View Project →</a
+              >
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-105"
+          >
+            <img
+              src="images/AI_portfolio/Intelligenttime.webp"
+              class="w-full h-48 object-cover"
+              alt="Dashboard Project"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Intelligent-time Attendance Tracker Platform</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
+                A time management application that helps users track their productivity and manage tasks effectively. My role involved implementing backend functionalities and optimizing database queries for better performance.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm"
+                  >Python</span
+                >
+                <span
+                  class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm"
+                  >Django & DRF</span
+                >
+                <span
+                  class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm"
+                  >PostgreSQL</span
+                >
+              </div>
+              <a
+                href="https://itimedev.minervaiot.com/" target="_blank"
+                class="text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer"
+                >View Project →</a
+              >
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-105"
+          >
+            <img
+              src="images/AI_portfolio/EasyTimePro.webp"
+              class="w-full h-48 object-cover"
+              alt="Fitness App Project"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">EasyTimePro – Offline Attendance System</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
+                A user-friendly time tracking tool aimed at freelancers and small businesses. I worked closely with a team of developers to ensure seamless integration of features and a smooth user experience.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm"
+                  >Python</span
+                >
+                <span
+                  class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm"
+                  >Django & DRF</span
+                >
+                <span
+                  class="px-3 py-1 bg-pink-100 text-pink-800 rounded-full text-sm"
+                  >PostgreSQL</span
+                >
+                <span
+                  class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+                  >SQL Server</span
+                >
+                <span
+                  class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm"
+                  >Oracle Database</span
+                >
+                <span
+                  class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm"
+                  >MySql</span
+                >
+              </div>
+              <a
+                href="https://www.zkteco.in/time-attendance-software/easy-time-pro" target="_blank"
+                class="text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer"
+                >View Project →</a
+              >
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-105"
+          >
+            <img
+              src="images/AI_portfolio/portfolio.webp"
+              class="w-full h-48 object-cover"
+              alt="Fitness App Project"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Portfolio</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
+                Apart from my AI-generated portfolio, I’ve created a custom-built version to showcase my web development skills.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm"
+                  >HTML</span
+                >
+                <span
+                  class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm"
+                  >CSS</span
+                >
+              </div>
+              <a
+                href="index.html"
+                class="text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer"
+                >View Project →</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="contact" class="py-20 bg-white dark:bg-gray-900">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
