@@ -949,6 +949,7 @@
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 const headerHeight = document.querySelector('nav').offsetHeight;
+                const mobileMenu = document.querySelector(".mobile-menu");
 
                 if (targetElement) {
                     window.scrollTo({
@@ -1174,6 +1175,9 @@
             });
           });
       });
+      if (performance.navigation.type === 1) {
+        window.location.href = window.location.pathname;
+      }
     </script>
   </body>
 </html>
