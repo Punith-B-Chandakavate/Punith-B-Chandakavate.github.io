@@ -9,18 +9,26 @@
     View portfolio projects in attendance systems, time tracking solutions, and full-stack development."
     >
     <title>Portfolio - Punith B Chandakavate</title>
+    <link rel="icon" href="images/profile_photo.webp" type="image/x-icon">
+
+    <!-- Tailwind CSS -->
     <script src="css/tailwind.css"></script>
+    <link rel="stylesheet" href="/css/tailwind.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/css/tailwind.css"></noscript>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" href="images/profile_photo.webp" type="image/x-icon">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+
+    <!-- Remixicon's -->
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"></noscript>
+
+    <link rel="preload" as="image" href="images/AI_portfolio/home_background.webp" />
     <script>
       tailwind.config = {
         darkMode: "class",
@@ -231,10 +239,11 @@
     <section id="home" class="pt-16 md:pt-0">
       <div class="relative min-h-screen flex items-center">
         <div class="absolute inset-0 z-0">
-          <div
-            class="w-full h-full bg-cover bg-center opacity-10"
-            style="background-image: url('images/AI_portfolio/home_background.webp');"
-          ></div>
+          <img 
+            src="images/AI_portfolio/home_background.webp" 
+            alt="" 
+            class="absolute top-0 left-0 w-full h-full object-cover opacity-10 -z-10"
+          />
         </div>
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-24">
           <div class="max-w-4xl">
