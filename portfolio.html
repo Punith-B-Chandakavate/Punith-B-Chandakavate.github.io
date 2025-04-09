@@ -52,12 +52,7 @@
         theme: {
           extend: {
             colors: {
-            //   primary: ({ opacityValue }) => {
-            //     if (opacityValue === undefined) {
-            //       return "rgb(59 130 246)";
-            //     }
-            //     return `rgb(59 130 246 / ${opacityValue})`;
-            //   },
+              primary: "rgb(var(--primary-color) / <alpha-value>)",
               "primary-dark": ({ opacityValue }) => {
                 if (opacityValue === undefined) {
                   return "rgb(59 130 246)";
@@ -100,10 +95,10 @@
         animation-play-state: running;
       }
       :root {
-        --primary-color: rgb(14 165 233);
+        --primary-color: 14 165 233;
       }
       .dark {
-        --primary-color: rgb(245 158 11);
+        --primary-color: 245 158 11;
       }
       .text-primary {
         color: var(--primary-color);
@@ -506,120 +501,7 @@
               class="w-full skill-icon"
             />
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="space-y-6">
-              <div>
-                <div class="flex justify-between mb-2">
-                  <span class="font-medium flex items-center gap-2">
-                    Python
-                  </span>
-                  <span class="text-gray-600 dark:text-gray-400" data-percent="95">0%</span>
-                </div>
-                <div class="h-2 bg-gray-200 rounded-full relative">
-                  <div
-                    class="h-2 bg-primary rounded-full skill-bar"
-                    data-percent="95"
-                  ></div>
-                  <span
-                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded" data-percent="95"
-                    >0%</span
-                  >
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between mb-2">
-                  <span class="font-medium flex items-center gap-2">
-                    Django
-                  </span>
-                  <span class="text-gray-600 dark:text-gray-400" data-percent="90">0%</span>
-                </div>
-                <div class="h-2 bg-gray-200 rounded-full relative">
-                  <div
-                    class="h-2 bg-primary rounded-full skill-bar"
-                    data-percent="90"
-                  ></div>
-                  <span
-                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded" data-percent="90"
-                    >0%</span
-                  >
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between mb-2">
-                  <span class="font-medium flex items-center gap-2">
-                    HTML/CSS
-                  </span>
-                  <span class="text-gray-600 dark:text-gray-400" data-percent="85">0%</span>
-                </div>
-                <div class="h-2 bg-gray-200 rounded-full relative">
-                  <div
-                    class="h-2 bg-primary rounded-full skill-bar"
-                    data-percent="85"
-                  ></div>
-                  <span
-                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded" data-percent="85"
-                    >0%</span
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="space-y-6">
-              <div>
-                <div class="flex justify-between mb-2">
-                  <span class="font-medium flex items-center gap-2">
-                    JavaScript
-                  </span>
-                  <span class="text-gray-600 dark:text-gray-400" data-percent="80">0%</span>
-                </div>
-                <div class="h-2 bg-gray-200 rounded-full relative">
-                  <div
-                    class="h-2 bg-primary rounded-full skill-bar"
-                    data-percent="80"
-                  ></div>
-                  <span
-                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded" data-percent="80"
-                    >0%</span
-                  >
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between mb-2">
-                  <span class="font-medium flex items-center gap-2">
-                    PostgreSQL
-                  </span>
-                  <span class="text-gray-600 dark:text-gray-400" data-percent="85">0%</span>
-                </div>
-                <div class="h-2 bg-gray-200 rounded-full relative">
-                  <div
-                    class="h-2 bg-primary rounded-full skill-bar"
-                    data-percent="85"
-                  ></div>
-                  <span
-                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded" data-percent="85"
-                    >0%</span
-                  >
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between mb-2">
-                  <span class="font-medium flex items-center gap-2">
-                    Git/GitHub/GitLab
-                  </span>
-                  <span class="text-gray-600 dark:text-gray-400" data-percent="90">0%</span>
-                </div>
-                <div class="h-2 bg-gray-200 rounded-full relative">
-                  <div
-                    class="h-2 bg-primary rounded-full skill-bar"
-                    data-percent="90"
-                  ></div>
-                  <span
-                    class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded skill-persent" data-percent="90"
-                    >0%</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
+          <div id="skills-container" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
         </div>
       </div>
     </section>
@@ -991,31 +873,73 @@
       </div>
     </footer>
     <script>
-        // Smooth scroll for all navigation links (desktop and mobile)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                const headerHeight = document.querySelector('nav').offsetHeight;
-                const mobileMenu = document.querySelector(".mobile-menu");
+        function createSkillElement(skill) {
+          return `
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium flex items-center gap-2">
+                  ${skill.name}
+                </span>
+                <span class="text-gray-600 dark:text-gray-400" data-percent="${skill.percent}">0%</span>
+              </div>
+              <div class="h-2 bg-gray-200 rounded-full relative">
+                <div class="h-2 bg-primary rounded-full skill-bar" data-percent="${skill.percent}"></div>
+                <span class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded" data-percent="${skill.percent}">0%</span>
+              </div>
+            </div>
+          `;
+        }
+        
+        function renderSkills(skills) {
+        const container = document.getElementById('skills-container');
 
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - headerHeight,
-                        behavior: 'smooth'
-                    });
+        const leftColumn = document.createElement('div');
+        const rightColumn = document.createElement('div');
 
-                    // Update URL hash without jumping
-                    history.pushState(null, null, targetId);
-                }
+        leftColumn.className = 'space-y-6';
+        rightColumn.className = 'space-y-6';
 
-                // Close mobile menu if it's open
-                if (mobileMenu.classList.contains('active')) {
-                    mobileMenu.classList.remove('active');
-                }
-            });
+        const mid = Math.ceil(skills.length / 2);
+        const leftSkills = skills.slice(0, mid);
+        const rightSkills = skills.slice(mid);
+
+        leftSkills.forEach(skill => {
+          leftColumn.innerHTML += createSkillElement(skill);
         });
+
+        rightSkills.forEach(skill => {
+          rightColumn.innerHTML += createSkillElement(skill);
+        });
+
+        container.appendChild(leftColumn);
+        container.appendChild(rightColumn);
+      }
+
+      // Smooth scroll for all navigation links (desktop and mobile)
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              const targetId = this.getAttribute('href');
+              const targetElement = document.querySelector(targetId);
+              const headerHeight = document.querySelector('nav').offsetHeight;
+              const mobileMenu = document.querySelector(".mobile-menu");
+
+              if (targetElement) {
+                  window.scrollTo({
+                      top: targetElement.offsetTop - headerHeight,
+                      behavior: 'smooth'
+                  });
+
+                  // Update URL hash without jumping
+                  history.pushState(null, null, targetId);
+              }
+
+              // Close mobile menu if it's open
+              if (mobileMenu.classList.contains('active')) {
+                  mobileMenu.classList.remove('active');
+              }
+          });
+      });
 
       document.addEventListener("DOMContentLoaded", function () {
         const themeToggle = document.getElementById("theme-toggle");
@@ -1171,11 +1095,19 @@
             }
         );
 
-        // Initialize skill bars
-        document.querySelectorAll('.skill-bar').forEach(bar => {
-            bar.style.width = '0%'; // Initial state
-            skillObserver.observe(bar);
-        });
+        // Load skill data from JSON file
+        fetch('json_files/skills.json')
+          .then(response => response.json())
+          .then(data => {
+            renderSkills(data);
+
+            // Now that skills are rendered, observe each bar
+            document.querySelectorAll('.skill-bar').forEach(bar => {
+              bar.style.width = '0%'; // Initial state
+              skillObserver.observe(bar);
+            });
+          })
+        .catch(error => console.error('Error loading skills.json:', error));
 
         // Render experience items
         const experienceObserver = new IntersectionObserver((entries) => {
