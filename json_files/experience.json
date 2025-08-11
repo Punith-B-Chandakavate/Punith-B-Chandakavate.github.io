@@ -6,6 +6,14 @@
       "position": "Junior Python Developer",
       "description": "A Python Developer with expertise in creating scalable, secure applications and optimizing performance. Key contributions include developing APIs with Django REST Framework, modernizing the UI of BioTimeCloud, and addressing security vulnerabilities in EasyTimePro. Experienced in leading teams, managing project timelines, and collaborating with clients to deliver customized solutions. Strong focus on problem-solving, code optimization, and ensuring high-quality application delivery.",
       "logo": "images/AI_portfolio/zkteco_logo.webp"
+    },
+    {
+      "startYear": "Mar 2021",
+      "endYear": "Apr 2022",
+      "company": "Hightemp Furnaces Limited, Bengaluru, India",
+      "position": "Trainee Engineer", 
+      "description": "Contributed to the design, development, and commissioning of industrial furnace systems, focusing on efficiency, safety, and performance. Specialized in PLC programming and SCADA integration for precise process control, providing hands-on technical support and collaborating effectively with engineers, project managers, and clients.",
+      "logo": "images/AI_portfolio/hightemp_logo.webp"
     }
   ]
   
