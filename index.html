@@ -1,812 +1,1133 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Punith B Chandakavate Portfolio</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta 
+    name="description" 
+    content="Punith B Chandakavate - Python/Django Developer specializing in building scalable web applications. 
+    View portfolio projects in attendance systems, time tracking solutions, and full-stack development."
+    >
+    <title>Portfolio - Punith B Chandakavate</title>
     <link rel="icon" href="images/profile_photo.webp" type="image/x-icon">
 
+    <!-- Tailwind CSS -->
+    <script src="css/tailwind.css"></script>
+    <link rel="stylesheet" href="/css/tailwind.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/css/tailwind.css"></noscript>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+
+    <!-- Remixicon's -->
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"></noscript>
+
+    <link rel="preload" as="image" href="images/AI_portfolio/home_background.webp" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Punith B Chandakavate",
+        "jobTitle": "Python/Django Developer",
+        "url": "https://punith-b-chandakavate.github.io/portfolio.html",
+        "sameAs": [
+          "https://github.com/Punith-B-Chandakavate",
+          "https://linkedin.com/in/punith-chandakavate"
+        ],
+        "image": "https://punith-b-chandakavate.github.io/images/AI_portfolio/profilephoto.webp",
+        "description": "Professional portfolio of Punith B Chandakavate - Python/Django developer specializing in web applications and attendance systems."
+      }
+      </script>
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "rgb(var(--primary-color) / <alpha-value>)",
+              "primary-dark": ({ opacityValue }) => {
+                if (opacityValue === undefined) {
+                  return "rgb(59 130 246)";
+                }
+                return `rgb(59 130 246 / ${opacityValue})`;
+              },
+              secondary: "#60A5FA",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
     <style>
-        :root {
-            --tw-text-opacity: 1;
-            --primary-color: rgb(245 158 11 / var(--tw-text-opacity));
-            --dark-bg: #1a1a1a;
-            --card-bg: #2a2a2a;
-            --icon-bg: white;
-            --white-bg: white;
-            --charcoal-gray: #4a4a4a;
-            
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      .skill-bar {
+        transition: width 1s ease-in-out;
+      }
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(10px); }
+        100% { transform: translateY(0px); }
+      }
+      .project-card {
+        animation: float 3s ease-in-out infinite;
+        animation-play-state: paused;
+      }
+      .project-card:hover {
+        animation-play-state: running;
+      }
+      :root {
+        --primary-color: 14 165 233;
+      }
+      .dark {
+        --primary-color: 245 158 11;
+      }
+      .text-primary {
+        color: var(--primary-color);
+      }
+      .bg-primary {
+        background-color: var(--primary-color);
+      }
+      .border-primary {
+        border-color: var(--primary-color);
+      }
+      .hover\:bg-primary:hover {
+        background-color: var(--primary-color);
+      }
+      .hover\:text-primary:hover {
+        color: var(--primary-color);
+      }
+      .focus\:ring-primary:focus {
+        --tw-ring-color: var(--primary-color);
+      }
+      .focus\:border-primary:focus {
+        border-color: var(--primary-color);
+      }
+      .nav-link.active {
+        color: var(--primary-color) !important;
+        font-weight: 600;
+      }
+      .mobile-menu {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .mobile-menu.active {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      *, *::before, *::after {
+        transition-property: background-color, border-color, color, fill, stroke, transform;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+      }
+      
+      /* Desktop animations */
+      @media (min-width: 768px) {
+        /* Experience timeline animations */
+        #experience-container > div:nth-child(odd) .exp-cont-animation {
+          animation: slideInFromLeft 0.6s ease-out forwards;
+          animation-play-state: paused;
+        }
+        #experience-container > div:nth-child(even) .exp-cont-animation {
+          animation: slideInFromRight 0.6s ease-out forwards;
+          animation-play-state: paused;
+        }
+        #experience-container > div:nth-child(even) .year-animation {
+          animation: slideInFromLeft 0.6s ease-out forwards;
+          animation-play-state: paused;
+        }
+        #experience-container > div:nth-child(odd) .year-animation {
+          animation: slideInFromRight 0.6s ease-out forwards;
+          animation-play-state: paused;
         }
 
-        /* Theme variables for light/dark mode */
-        :root[data-mode="light"] {
-            --tw-text-opacity: 1;
-            --primary-color: rgb(245 158 11 / var(--tw-text-opacity));
-            --dark-bg: #ffffff;
-            --card-bg: #f8f9fa;
-            --icon-bg: #333333;
-            --text-color: #333333;
-            --navbar-bg: #ffffff;
-            --exp-year-bg: #cccccc;
-            --company-colour: #4a4a4a;
-            --exp-content-colour: #555555;
-            --border-colour: #aea8a863;
-
-            
+        @keyframes slideInFromLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-100px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
         }
 
-        /* Dark theme variables */
-        :root[data-mode="dark"] {
-            --dark-bg: #1a1a1a;
-            --card-bg: #2a2a2a;
-            --icon-bg: white;
-            --text-color: white;
-            --navbar-bg: #1a1a1a;
-            --exp-year-bg: #4a4a4a;
-            --company-colour: #cccccc;
-            --exp-content-colour: #b0b0b0;
-            --border-colour: var(--dark-bg);
+        @keyframes slideInFromRight {
+          from {
+            opacity: 0;
+            transform: translateX(100px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
         }
-       
-        body {
-            background-color: var(--dark-bg);
-            color: var(--text-color);
-            font-family: 'Poppins', sans-serif;
-        }
-        .Merriweather_font {
-            font-family: 'Merriweather', serif;
-        }
+      }
 
-        .bg-dark-custom {
-            background-color: var(--card-bg);
-        }
-
-        .section_window_height {
-            min-height: 100vh; /* Changed from fixed height to min-height */
-            display: flex;
-            align-items: center;
-            padding-top: 120px;
-            padding-bottom: 50px;
-            flex-wrap: wrap;
-        }
-
-        @media (max-width: 768px) {
-            .section_window_height {
-                min-height: auto; 
-                padding-top: 80px;
-                padding-bottom: 30px;
-            }
-        }
-        @media (max-width: 375px) and (min-width: 320px) {
-            .name_size {
-                font-size: 11px;
-            }
-        }
-
-        .navbar {
-            background-color: transparent !important;
-        }
-
-        .navbar-brand, .nav-link {
-            transition: color 0.3s ease;
-            color: var(--text-color) !important;
-        }
-
-        .navbar.home-active .navbar-brand,
-        .navbar.home-active .nav-link {
-            color: var(--white-bg) !important;
-        }
-
-        /* --------------------- Hero section ---------------- */
-        
-        .hero-section {
-            min-height: 100vh;
-            padding-top: 120px;
-        }
-
-        .contact-button {
-            background-color: var(--primary-color);
-            color: var(--dark-bg);
-            border: none;
-            padding: 10px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                height: auto;
-                padding: 60px 20px;
-            }
-            .hero-section h1 {
-                font-size: 2rem;
-            }
-            .hero-section .contact-button {
-                padding: 10px 20px;
-                font-size: 1rem;
-            }
-        }
-        .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/portfolio/hero_section.webp') no-repeat 160% 10%/80%;
-            text-align: center;
-            color: var(--white-bg);
-            background-color: #1a1a1a !important;
-        }
-
-        /* --------------------- project section ---------------- */
-
-        .project-card {
-            transition: transform 0.3s ease;
-            background-color: var(--dark-bg);
-            color: var(--text-color);
-            border-color: var(--dark-bg);
-            border-radius: 10px;
-            border: 1px solid var(--border-colour);
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-        .project-card img {
-            width: 100%;
-            height: 100px;
-            padding: 15px;
-        }  
-
-        .card-body {
-            color: var(--text-color);
-        }
-
-        /* --------------------- Skills section ---------------- */
-
-        .skill-icon {
-            font-size: 2.5rem;
-            margin: 1rem;
-        }
-        .skill-card {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            height: 100%;
-            transition: transform 0.3s;
-            color: var(--text-color);
-            border: 1px solid var(--border-colour);
+      /* Mobile animations */
+      @media (max-width: 767px) {
+         /* Experience timeline animations */
+        #experience-container > div .exp-cont-animation,
+        #experience-container > div .year-animation {
+          animation: year_slideInFromRight 0.6s ease-out forwards;
+          animation-play-state: paused;
         }
         
-        .skill-card:hover {
-            transform: translateY(-5px);
-            background-color: var(--primary-color);
-            color: var(--dark-bg);
+        @keyframes year_slideInFromRight {
+          from {
+            opacity: 0;
+            transform: translateX(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
         }
+      }
 
-        .col-md-3 {
-            padding: 12px;
+      #experience-container > div.visible .exp-cont-animation,
+      #experience-container > div.visible .year-animation {
+        animation-play-state: running;
+      }
+      
+      /* Company logo container adjustments */
+      @media (max-width: 768px){
+        #experience-container .w-16.h-12 {
+          width: 20% !important;
+          height: 20% !important;
+          min-width: 47px !important;
+          min-height: 47px !important;
         }
+      }
 
-        @media (min-width: 768px) {
-            .col-md-3 {
-                flex: 0 0 auto;
-                width: 25%;
-                
-            }
-        }
-
-        @media (min-width: 992px) {
-            .col-lg-2 {
-                flex: 0 0 auto;
-                width: 16.66667%;
-            }
-        }
-
-        /* --------------------- contact section ---------------- */
-
-        .contact-section {
-            background-color: var(--card-bg);
-            padding: 60px 0;
-            color: var(--text-color);
-        }
-
-        .contact-title {
-            text-align: center;
-            margin: 40px 0px 60px 0px;
-            position: relative;
-            font-weight: bold;
-            font-family: 'Merriweather', serif;
-        }
-
-        .contact-title::before,
-        .contact-title::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            height: 2px;
-            background-color: var(--primary-color);
-            width: calc(50% + 5px);
-        }
-
-        .contact-title::before {
-            right: 50%;
-            margin-right: 10%;
-        }
-
-        .contact-title::after {
-            left: 50%;
-            margin-left: 10%;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .contact-card {
-            background-color: var(--dark-bg);
-            padding: 15px 30px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            min-width: 250px;
-            transition: transform 0.3s ease;
-            border: 1px solid var(--border-colour);
-
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-card i {
-            color: var(--text-color);
-            font-size: 1.2rem;
-        }
-
-        .contact-card span {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 60px;
-        }
-
-        .social-links a {
-            color: var(--text-color);
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-
-        @media (max-width: 768px) {
-            .contact-title::before,
-            .contact-title::after {
-                width: calc(50% - 103px);
-            }
-
-            .contact-title::before {
-                right: 50%;
-                margin-right: 25%;
-            }
-
-            .contact-title::after {
-                left: 50%;
-                margin-left: 25%;
-            }
-
-            .contact-card {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 375px) and (min-width: 320px) {
-            .contact-title::before {
-                right: 60%;
-                margin-right: 25%;
-            }
-            .contact-title::after {
-                left: 60%;
-                margin-left: 25%;
-            }
-        }
-        
-        /* --------------------- Experience section ---------------- */
-
-        .experience-container {
-            width: 100%;
-            max-width: 900px;
-            margin: 20px auto;
-        }
-
-        .experience-item {
-            display: flex;
-            max-width: 900px;
-            margin: 0 auto 40px;
-            position: relative;
-        }
-
-        .experience-year {
-            min-width: 120px;
-            position: relative;
-            margin-right: 40px;
-        }
-
-        .experience-year span {
-            background-color: var(--exp-year-bg);
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 14px;
-            display: inline-block;
-            margin-left: -110px;
-        }
-
-
-        .experience-line {
-            position: absolute;
-            left: 70px;
-            top: 30px;
-            height: calc(100% + 12px); /* Extend the line to connect to the next item */
-            width: 2px;
-            background-color: var(--charcoal-gray);
-        }
-
-        .experience-circle {
-            position: absolute;
-            left: 63px; /* Adjusted to center with the line */
-            top: 8px;
-            width: 16px;
-            height: 16px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            box-shadow: 0px 0px 15px 1px var(--primary-color);
-        }
-
-        .experience-content {
-            flex: 1;
-        }
-
-        .experience-content h2 {
-            font-size: 24px;
-            margin: 0 0 8px 0;
-        }
-
-        .experience-content .company {
-            font-size: 18px;
-            color: var(--company-colour);
-            margin: 0 0 16px 0;
-        }
-
-        .experience-content .description {
-            line-height: 1.6;
-            color:var(--exp-content-colour);
-            margin: 0;
-        }
-
-        @media (max-width: 768px) {
-            .experience-item {
-                margin-left: 20px;
-            }
-
-            .experience-year span {
-                margin-left: -20px;
-            }
-
-            .experience-line {
-                left: 152px;
-                height: calc(100% + 32px);
-            }
-
-            .experience-circle {
-                left: 145px;
-            }
-
-            .experience-content h2 {
-                font-size: 20px;
-            }
-
-        }
-                       
-        /* --------------------- Theme toggle button ---------------- */
-        .theme-switch {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            z-index: 1000;
-            background: var(--primary-color);
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            color: var(--dark-bg);
-            transition: all 0.3s ease;
-        }   
     </style>
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="images/profile_photo.webp" alt="Punith B Chandakavate" style="height: 30px; margin-right: 10px;">
-                <span class="name_size">Punith B Chandakavate</span>
-              </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
+  </head>
+  <body
+    class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-['Inter']"
+  >
+    <nav
+      class="fixed w-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm z-50 border-b border-gray-200 dark:border-gray-700"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full overflow-hidden">
+              <img
+                src="images/AI_portfolio/profile_photo_nav_bar.webp"
+                alt="Punith B Chandakavate"
+                class="w-full h-full object-cover"
+              />
             </div>
+            <a href="#home" class="text-lg font-medium text-gray-900 dark:text-gray-100">Punith B Chandakavate</a>
+          </div>
+          <div class="hidden md:flex items-center space-x-8 ml-auto">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+          </div>
+          <button
+            id="mobile-menu-button" title="Menu"
+            class="md:hidden text-gray-500 hover:text-gray-600"
+          >
+            <i class="ri-menu-line ri-2x"></i>
+          </button>
         </div>
+      </div>
+      <div
+        class="mobile-menu md:hidden fixed top-16 left-0 right-0 bg-white/90 dark:bg-gray-800/90 border-b dark:border-gray-700 z-40"
+      >
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a
+            href="#home"
+            class="block px-3 py-2 rounded-md text-base font-medium nav-link active dark:text-gray-100 hover:bg-gray-700"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="block px-3 py-2 rounded-md text-base font-medium nav-link dark:text-gray-100 hover:bg-gray-700"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="block px-3 py-2 rounded-md text-base font-medium nav-link dark:text-gray-100 hover:bg-gray-700"
+            >Skills</a
+          >
+          <a
+            href="#experience"
+            class="block px-3 py-2 rounded-md text-base font-medium nav-link dark:text-gray-100 hover:bg-gray-700"
+            >Experience</a
+          >
+          <a
+            href="#projects"
+            class="block px-3 py-2 rounded-md text-base font-medium nav-link dark:text-gray-100 hover:bg-gray-700"
+            >Projects</a
+          >          
+          <a
+            href="#contact"
+            class="block px-3 py-2 rounded-md text-base font-medium nav-link dark:text-gray-100 hover:bg-gray-700"
+            >Contact</a
+          >
+        </div>
+      </div>
     </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero-section d-flex align-items-center">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12 col-md-12 col-sm-12 text-center text-lg-start">
-                    <h1 class="display-5">I'M <span style="color: var(--primary-color)">Punith B Chandakavate</span></h1>
-                    <p class="lead">Junior Python Developer</p>
-                    <a href="#contact" class="contact-button mt-3">Contact Me</a>
-                </div>
-                <div class="hero-image"></div>
-            </div>
+    <section id="home" class="pt-16 md:pt-0">
+      <div class="relative min-h-screen flex items-center">
+        <div class="absolute inset-0 z-0">
+          <img 
+            src="images/AI_portfolio/home_background.webp" 
+            alt="" 
+            class="absolute top-0 left-0 w-full h-full object-cover opacity-10 -z-10"
+          />
         </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-24">
+          <div class="max-w-4xl">
+            <h1
+              class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-6 mt-6 sm:mt-8 md:mt-24"
+            >
+              Hi, I'm Punith B Chandakavate
+              <span class="block text-primary mt-2">Python Developer</span>
+            </h1>
+            <p
+              class="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 mb-8"
+            >
+            Crafting robust, scalable, and user-friendly web applications. Passionate about clean code, innovation, and empowering developers.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="#projects"
+                aria-label="View My Work"
+                class="bg-primary text-white px-6 py-3 rounded-button text-base font-medium hover:bg-primary/90 transition-colors text-center"
+                >View My Work</a
+              >
+              <a
+                href="#contact"
+                aria-label="Contact Me"
+                class="border-2 border-primary text-primary px-6 py-3 rounded-button text-base font-medium hover:bg-primary/5 transition-colors text-center"
+                >Contact Me</a
+              >
+              <a
+                href="Punith B Chandakavate Resume.pdf"
+                download
+                aria-label="Download CV"
+                class="flex items-center justify-center gap-2 bg-gray-800 text-white px-6 py-3 rounded-button text-base font-medium hover:bg-gray-700 transition-colors"
+              >
+                <i class="ri-download-2-line"></i>
+                <span>Download CV</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="#contact" aria-label="Contact Me">
+          <div
+            class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+          >
+            <i class="ri-arrow-down-line ri-2x text-primary"></i>
+          </div>
+        </a>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-5 section_window_height">
-        <div class="container">
-            <h2 class="text-center mb-5 Merriweather_font">About Me</h2>
-            <div class="row align-items-center">
-                <div class="col-md-12">
-                    <p class="lead">Hello! I'm a passionate Django developer with a strong background in Python programming, specializing in building robust web applications. My focus is on creating clean, efficient, and user-friendly solutions that meet the needs of clients and users alike.</p>
-                    <p>Collaborating with Junior Python developers has enriched my experience, allowing me to mentor others while continuously learning from my peers. I thrive in dynamic environments where I can tackle challenges and contribute to innovative solutions.</p>
-                    <p>I'm committed to staying updated with the latest technologies and best practices in web development.  I am excited about the future and look forward to taking on new challenges in web development.</p>
-    
-                    <a href="#" class="btn btn-primary contact-button mt-3">Download CV</a>
+    <section id="about" class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="relative">
+              <img
+                src="images/AI_portfolio/profilephoto.webp"
+                class="w-full h-auto rounded-lg shadow-lg"
+                alt="Profile Photo"
+              />
+            </div>
+            <div>
+              <h2 class="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
+              <p class="text-gray-600 dark:text-gray-400 mb-6 text-xl sm:text-2xl">
+                Hello! I'm a passionate Django developer with a strong background in Python programming, 
+                specializing in building robust web applications. My focus is on creating clean, efficient, 
+                and user-friendly solutions that meet the needs of clients and users alike.
+              </p>
+              <p class="text-gray-600 dark:text-gray-400 mb-8">
+                Collaborating with Junior Python developers has enriched my experience, 
+                allowing me to mentor others while continuously learning from my peers. 
+                I thrive in dynamic environments where I can tackle challenges and contribute to innovative solutions.
+              </p>
+              <p class="text-gray-600 dark:text-gray-400 mb-8">
+                I'm committed to staying updated with the latest technologies and best practices in web development. 
+                I am excited about the future and look forward to taking on new challenges in web development.
+              </p>
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full"
+                  >
+                    <i class="ri-code-line ri-lg text-primary"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold">Python/Django Web Development</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                      Backend application development
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full"
+                  >
+                    <i class="ri-layout-line ri-lg text-primary"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold">UI/UX Design</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                      Creating intuitive user experiences
+                    </p>
+                  </div>
                 </div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-5 section_window_height">
-        <div class="container">
-            <h2 class="text-center mb-5 Merriweather_font">My Skills</h2>
-            <div class="row">
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="skill-card">
-                        <img src="https://skillicons.dev/icons?i=python" class="skill-icon" />
-                        <h4>Python</h4>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="skill-card">
-                        <img src="https://skillicons.dev/icons?i=django" class="skill-icon" />
-                        <h4>Django</h4>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="skill-card">
-                        <img src="https://skillicons.dev/icons?i=html" class="skill-icon" />
-                        <h4>HTML5</h4>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="skill-card">
-                        <img src="https://skillicons.dev/icons?i=css" class="skill-icon" />
-                        <h4>CSS</h4>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="skill-card">
-                        <img src="https://skillicons.dev/icons?i=js" class="skill-icon" />
-                        <h4>JS(Basic)</h4>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="skill-card">
-                        <img src="https://skillicons.dev/icons?i=postgres" class="skill-icon" />
-                        <h4>postgres</h4>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="skill-card">
-                        <img src="https://skillicons.dev/icons?i=postman" class="skill-icon" />
-                        <h4>postman</h4>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="skill-card">
-                        <img src="https://skillicons.dev/icons?i=vscode" class="skill-icon" />
-                        <h4>vscode</h4>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="skill-card">
-                        <img src="https://skillicons.dev/icons?i=pycharm" class="skill-icon" />
-                        <h4>pycharm</h4>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="skill-card">
-                        <img src="https://skillicons.dev/icons?i=git" class="skill-icon" />
-                        <h4>git</h4>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="skill-card">
-                        <img src="https://skillicons.dev/icons?i=github" class="skill-icon" />
-                        <h4>github</h4>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="skill-card">
-                        <img src="https://skillicons.dev/icons?i=gitlab" class="skill-icon" />
-                        <h4>gitlab</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-5 bg-dark-custom section_window_height">
-        <div class="container">
-            <h2 class="text-center mb-5 Merriweather_font">My Projects</h2>
-            <div class="row">
-                <!-- Project 1 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card project-card">
-                        <img src="images/portfolio/biotimecloudv2.webp" class="card-img-top" alt="Project 1">
-                        <div class="card-body">
-                            <h5 class="card-title">BioTimeCloud</h5>
-                            <p class="card-text">A platform for managing and analyzing biological data where I developed user-friendly features, ensured data integrity, and implemented a REST API for mobile functionality using optimal protocols for seamless data access.</p>
-                            <a href="https://biotimecloud.org/" class="btn btn-primary contact-button mt-3" target="_blank">View Project</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card project-card">
-                        <img src="images/portfolio/intelligent-time.webp" class="card-img-top" alt="Project 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Intelligent-time</h5>
-                            <p class="card-text"> A time management application that helps users track their productivity and manage tasks effectively. My role involved implementing backend functionalities and optimizing database queries for better performance.</p>
-                            <a href="https://itimedev.minervaiot.com/" class="btn btn-primary contact-button mt-3" target="_blank">View Project</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card project-card">
-                        <img src="images/portfolio/easyTimePro.webp" class="card-img-top" alt="Project 3">
-                        <div class="card-body">
-                            <h5 class="card-title">EasyTimePro</h5>
-                            <p class="card-text">A user-friendly time tracking tool aimed at freelancers and small businesses. I worked closely with a team of developers to ensure seamless integration of features and a smooth user experience.</p>
-                            <a href="https://www.zkteco.in/time-attendance-software/easy-time-pro" class="btn btn-primary contact-button mt-3" target="_blank">View Project</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card project-card">
-                        <img src="images/portfolio/AI_portfoli.png" class="card-img-top" alt="Project 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Portfolio</h5>
-                            <p class="card-text">I’ve built my portfolio using AI-powered tools like <b>Readdy.ai</b> and <b>DeepSeek</b> to showcase my projects, skills, and experience interactively. Leveraging AI technology, it enhances professional storytelling and engagement. Check it out to see how AI brings my work to life!</p>
-                            <a href="portfolio.html" class="btn btn-primary contact-button mt-3">View Project</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="about" class="py-5 section_window_height">
-        <div class="container">
-            <h2 class="text-center mb-5 Merriweather_font">Experience</h2>
-            <div class="row align-items-center">
-                <div class="col-md-12">
-                    <div class="experience-container">
-                        <div id="experience"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
-        <div class="contact-section">
-            <div class="container">
-                <h2 class="contact-title">Contact Me</h2>
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <i class="fas fa-envelope"></i>
-                        <span class="name_size">puneetchandakawathe@gmail.com</span>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <i class="fas fa-phone"></i>
-                        <span class="name_size">(+91) 735-340-3383</span>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span class="name_size">Bengaluru, India</span>
-                    </div>
-                </div>
-    
-                <div class="social-links contact-title">
-                    <a href="https://github.com/Punith-B-Chandakavate" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/punith-chandakavate-595400110" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://x.com/punith_7353" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://www.instagram.com/mr.hunter_350/profilecard/?igsh=Z3phdzhva3h6a3c5" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/puneet.chandakawathe.7?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4">
-        <div class="container">
-            <p class="mb-0">"Thanks for Scrolling"</p>
-        </div>
-    </footer>
-    <button class="theme-switch" onclick="toggleTheme()">
-        <i class="fas fa-sun"></i>
-    </button>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const experienceData = [
-            {
-                year: 'Oct 2022 - Present',
-                title: "Junior Python Developer",
-                company: "ZKTeco India - Global R&D Center, Bengaluru, India",
-                description: "A Python Developer with expertise in creating scalable, secure applications and optimizing performance. Key contributions include developing APIs with Django REST Framework, modernizing the UI of BioTimeCloud, and addressing security vulnerabilities in EasyTimePro. Experienced in leading teams, managing project timelines, and collaborating with clients to deliver customized solutions. Strong focus on problem-solving, code optimization, and ensuring high-quality application delivery."
+    <section id="skills" class="py-20 bg-gray-100 dark:bg-gray-800">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          Technical Skills
+        </h2>
+        <p
+          class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto"
+        >
+          A comprehensive overview of my technical expertise and professional
+          capabilities
+        </p>
+        <div class="max-w-4xl mx-auto">
+          <style>
+            .skill-icon {
+                transition: transform 0.3s ease-in-out;
+                transform: scale(1);
+                cursor: pointer;
             }
-        ];
+            .skill-icon:hover {
+                transform: scale(1.2);
+            }
+            @keyframes skillBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            }
+          </style>
+          <div class="grid grid-cols-3 md:grid-cols-6 gap-8 mb-12">
+            <img
+              src="https://skillicons.dev/icons?i=python" loading="lazy"
+              alt="Python"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=django" loading="lazy"
+              alt="Django"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=html" loading="lazy"
+              alt="HTML"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=css" loading="lazy"
+              alt="CSS"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=js" loading="lazy"
+              alt="JavaScript"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=postgres" loading="lazy"
+              alt="PostgreSQL"
+              class="w-full skill-icon"
+            />
+          </div>
+          <div class="grid grid-cols-3 md:grid-cols-6 gap-8 mb-12">
+            <img
+              src="https://skillicons.dev/icons?i=postman" loading="lazy"
+              alt="Postman"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=vscode" loading="lazy"
+              alt="VS Code"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=pycharm" loading="lazy"
+              alt="PyCharm"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=git" loading="lazy"
+              alt="Git"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=github" loading="lazy"
+              alt="GitHub"
+              class="w-full skill-icon"
+            />
+            <img
+              src="https://skillicons.dev/icons?i=gitlab" loading="lazy"
+              alt="GitLab"
+              class="w-full skill-icon"
+            />
+          </div>
+          <div id="skills-container" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+        </div>
+      </div>
+    </section>
 
-        function renderTimeline() {
-            const experience = document.getElementById('experience');
-            experience.innerHTML = '';
-            experienceData.forEach(item => {
-                const timelineItem = document.createElement('div');
-                timelineItem.classList.add('experience-item');
+    <section id="experience" class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          Work Experience
+        </h2>
+        <p
+          class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto"
+        >
+          My professional journey and career highlights
+        </p>
+        <div class="max-w-4xl mx-auto">
+          <div class="relative">
+            <!-- Timeline line -->
+            <div
+              class="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-700 transform md:translate-x-px"
+            ></div>
 
-                const yearDiv = document.createElement('div');
-                yearDiv.classList.add('experience-year');
-                yearDiv.innerHTML = `
-                    <span>${item.year}</span>
-                    <div class="experience-circle"></div>
-                    <div class="experience-line"></div>
-                `;
+            <div id="experience-container" class="relative space-y-8">
+              <!-- Experience items will be dynamically loaded here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                const contentDiv = document.createElement('div');
-                contentDiv.classList.add('experience-content');
-                contentDiv.innerHTML = `
-                    <h2>${item.title}</h2>
-                    <p class="company">${item.company}</p>
-                    <p class="description">${item.description}</p>
-                `;
-
-                timelineItem.appendChild(yearDiv);
-                timelineItem.appendChild(contentDiv);
-                experience.appendChild(timelineItem);
+    <section id="projects" class="py-20 bg-gray-100 dark:bg-gray-800">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          Featured Projects
+        </h2>
+        <p
+          class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto"
+        >
+          Here are some of my recent works that showcase my skills and
+          experience in web development
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <script>
+            document.querySelectorAll(".project-card").forEach((card) => {
+              card.addEventListener("mouseleave", () => {
+                card.style.transform = "translateY(0)";
+              });
             });
-        }
-        renderTimeline();
-    </script>
+          </script>
+          <div
+            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-105"
+          >
+            <img
+              src="images/AI_portfolio/Biotimecloud-V2.webp"
+              class="w-full h-48 object-cover"
+              alt="Cloud-Based Attendance Tracker Project"
+              loading="lazy"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">BiotimeCloud 2.0 Attendance Tracker Platform</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
+                A platform for managing and analyzing biological data where I developed user-friendly features, ensured data integrity, and implemented a REST API for mobile functionality using optimal protocols for seamless data access.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+                  >Python</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm"
+                  >Django & DRF</span
+                >
+                <span
+                  class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm"
+                  >PostgreSQL</span
+                >
+              </div>
+              <a
+                href="https://biotimecloud.org/" target="_blank"
+                class="text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer"
+                >View Project →</a
+              >
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-105"
+          >
+            <img
+              src="images/AI_portfolio/Intelligenttime.webp"
+              class="w-full h-48 object-cover"
+              alt="Dashboard Project"
+              loading="lazy"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Intelligent-time Attendance Tracker Platform</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
+                A time management application that helps users track their productivity and manage tasks effectively. My role involved implementing backend functionalities and optimizing database queries for better performance.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm"
+                  >Python</span
+                >
+                <span
+                  class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm"
+                  >Django & DRF</span
+                >
+                <span
+                  class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm"
+                  >PostgreSQL</span
+                >
+              </div>
+              <a
+                href="https://itimedev.minervaiot.com/" target="_blank"
+                class="text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer"
+                >View Project →</a
+              >
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-105"
+          >
+            <img
+              src="images/AI_portfolio/EasyTimePro.webp"
+              class="w-full h-48 object-cover"
+              alt="Fitness App Project"
+              loading="lazy"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">EasyTimePro – Offline Attendance System</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
+                A user-friendly time tracking tool aimed at freelancers and small businesses. I worked closely with a team of developers to ensure seamless integration of features and a smooth user experience.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm"
+                  >Python</span
+                >
+                <span
+                  class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm"
+                  >Django & DRF</span
+                >
+                <span
+                  class="px-3 py-1 bg-pink-100 text-pink-800 rounded-full text-sm"
+                  >PostgreSQL</span
+                >
+                <span
+                  class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+                  >SQL Server</span
+                >
+                <span
+                  class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm"
+                  >Oracle Database</span
+                >
+                <span
+                  class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm"
+                  >MySql</span
+                >
+              </div>
+              <a
+                href="https://www.zkteco.in/time-attendance-software/easy-time-pro" target="_blank"
+                class="text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer"
+                >View Project →</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+            Get in Touch
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400 text-center mb-12">
+            Have a project in mind? Let's discuss how we can work together
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+              <form id="contact-form" class="space-y-6">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="w-full px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-button focus:ring-2 focus:ring-primary focus:border-primary"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="w-full px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-button focus:ring-2 focus:ring-primary focus:border-primary"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="message"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    >Message</label
+                  >
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    class="w-full px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-button focus:ring-2 focus:ring-primary focus:border-primary"
+                    required
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="w-full bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90 transition-colors"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+            <div class="space-y-8">
+              <div>
+                <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
+                <div class="space-y-4">
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full"
+                    >
+                      <i class="ri-mail-line text-primary"></i>
+                    </div>
+                    <div>
+                      <p class="text-gray-600 dark:text-gray-400">Email</p>
+                      <a
+                        href="mailto:puneetchandakawathe@gmail.com"
+                        class="text-primary hover:text-primary/80"
+                        >puneetchandakawathe@gmail.com</a
+                      >
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full"
+                    >
+                      <i class="ri-phone-line text-primary"></i>
+                    </div>
+                    <div>
+                      <p class="text-gray-600 dark:text-gray-400">Phone</p>
+                      <a
+                        href="tel:+917353403383"
+                        class="text-primary hover:text-primary/80"
+                        >(+91) 73534 03383</a
+                      >
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full"
+                    >
+                      <i class="ri-map-pin-line text-primary"></i>
+                    </div>
+                    <div>
+                      <p class="text-gray-600 dark:text-gray-400">Location</p>
+                      <p class="text-primary">Bengaluru, India</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-4">Follow Me</h3>
+                <div class="flex gap-4">
+                  <a
+                    href="https://github.com/Punith-B-Chandakavate" target="_blank" aria-label="GitHub profile"
+                    class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
+                  >
+                    <i class="ri-github-line text-primary"></i>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/punith-chandakavate" target="_blank" aria-label="LinkedIn profile"
+                    class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
+                  >
+                    <i class="ri-linkedin-line text-primary"></i>
+                  </a>
+                  <a
+                    href="https://x.com/punith_7353" target="_blank" aria-label="Twitter profile"
+                    class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
+                  >
+                    <i class="ri-twitter-x-line text-primary"></i>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/mr.hunter_350/profilecard/?igsh=Z3phdzhva3h6a3c5" target="_blank" aria-label="Instagram profile"
+                    class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
+                  >
+                    <i class="ri-instagram-line text-primary"></i>
+                  </a>
+                  <a
+                    href="https://www.facebook.com/puneet.chandakawathe.7?mibextid=ZbWKwL" target="_blank" aria-label="Facebook profile"
+                    class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
+                  >
+                    <i class="ri-facebook-line text-primary"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer
+      class="relative bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white py-12"
+    >
+      <div
+        id="theme-toggle"
+        class="fixed bottom-4 right-4 w-12 h-12 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors shadow-lg z-50"
+      >
+        <i class="ri-sun-line dark:hidden text-xl"></i>
+        <i class="ri-moon-line hidden dark:block text-xl"></i>
+      </div>
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div>
+            <span class="text-2xl font-['Pacifico']">Portfolio</span>
+          </div>
+          <div class="text-gray-400">
+            <p>&copy; 2025 Punith B Chandakavate. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
     <script>
-        // Theme Toggle Function
-        function toggleTheme() {
-            const root = document.documentElement;
-            const icon = document.querySelector('.theme-switch i');
-            
-            const currentMode = root.getAttribute('data-mode');
-            const newMode = currentMode === 'dark' ? 'light' : 'dark';
-            
-            root.setAttribute('data-mode', newMode);
-            icon.classList.replace(
-                newMode === 'dark' ? 'fa-moon' : 'fa-sun',
-                newMode === 'dark' ? 'fa-sun' : 'fa-moon'
-            );
-            localStorage.setItem('theme-mode', newMode);
+        function createSkillElement(skill) {
+          return `
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium flex items-center gap-2">
+                  ${skill.name}
+                </span>
+                <span class="text-gray-600 dark:text-gray-400" data-percent="${skill.percent}">0%</span>
+              </div>
+              <div class="h-2 bg-gray-200 rounded-full relative">
+                <div class="h-2 bg-primary rounded-full skill-bar" data-percent="${skill.percent}"></div>
+                <span class="absolute -right-1 -top-7 bg-primary text-white text-xs px-2 py-1 rounded" data-percent="${skill.percent}">0%</span>
+              </div>
+            </div>
+          `;
+        }
+        
+        function renderSkills(skills) {
+        const container = document.getElementById('skills-container');
+
+        const leftColumn = document.createElement('div');
+        const rightColumn = document.createElement('div');
+
+        leftColumn.className = 'space-y-6';
+        rightColumn.className = 'space-y-6';
+
+        const mid = Math.ceil(skills.length / 2);
+        const leftSkills = skills.slice(0, mid);
+        const rightSkills = skills.slice(mid);
+
+        leftSkills.forEach(skill => {
+          leftColumn.innerHTML += createSkillElement(skill);
+        });
+
+        rightSkills.forEach(skill => {
+          rightColumn.innerHTML += createSkillElement(skill);
+        });
+
+        container.appendChild(leftColumn);
+        container.appendChild(rightColumn);
+      }
+
+      // Smooth scroll for all navigation links (desktop and mobile)
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              const targetId = this.getAttribute('href');
+              const targetElement = document.querySelector(targetId);
+              const headerHeight = document.querySelector('nav').offsetHeight;
+              const mobileMenu = document.querySelector(".mobile-menu");
+
+              if (targetElement) {
+                  window.scrollTo({
+                      top: targetElement.offsetTop - headerHeight,
+                      behavior: 'smooth'
+                  });
+
+                  // Update URL hash without jumping
+                  history.pushState(null, null, targetId);
+              }
+
+              // Close mobile menu if it's open
+              if (mobileMenu.classList.contains('active')) {
+                  mobileMenu.classList.remove('active');
+              }
+          });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggle = document.getElementById("theme-toggle");
+        const html = document.documentElement;
+        const sunIcon = themeToggle.querySelector(".ri-sun-line");
+        const moonIcon = themeToggle.querySelector(".ri-moon-line");
+        function setTheme(isDark) {
+          if (isDark) {
+            html.classList.add("dark");
+            sunIcon.classList.add("hidden");
+            moonIcon.classList.remove("hidden");
+          } else {
+            html.classList.remove("dark");
+            sunIcon.classList.remove("hidden");
+            moonIcon.classList.add("hidden");
+          }
+          localStorage.theme = isDark ? "dark" : "light";
+        }
+        // Check for saved theme preference, otherwise use system preference
+        const prefersDark =
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+        setTheme(prefersDark);
+        // Theme toggle button click handler
+        themeToggle.addEventListener("click", () => {
+          const isDark = !html.classList.contains("dark");
+          setTheme(isDark);
+          // Add animation class
+          themeToggle.classList.add("animate-spin");
+          setTimeout(() => {
+            themeToggle.classList.remove("animate-spin");
+          }, 300);
+        });
+        // Listen for system theme changes
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", (e) => {
+            if (!localStorage.theme) {
+              setTheme(e.matches);
+            }
+          });
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.querySelector(".mobile-menu");
+        const navLinks = document.querySelectorAll(".nav-link");
+        const contactForm = document.getElementById("contact-form");
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("active");
+        });
+        document.querySelectorAll(".mobile-menu .nav-link").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.remove("active");
+            const targetId = link.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        });
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            navLinks.forEach((l) => l.classList.remove("active"));
+            link.classList.add("active");
+            if (window.innerWidth < 768) {
+              mobileMenu.classList.remove("active");
+            }
+          });
+        });
+        const observerOptions = {
+          threshold: 0.5,
+        };
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute("id");
+              navLinks.forEach((link) => {
+                if (link.getAttribute("href") === `#${id}`) {
+                  link.classList.add("active");
+                } else {
+                  link.classList.remove("active");
+                }
+              });
+            }
+          });
+        }, observerOptions);
+        document.querySelectorAll("section").forEach((section) => {
+          observer.observe(section);
+        });
+        contactForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const formData = new FormData(contactForm);
+          const data = Object.fromEntries(formData);
+          const notification = document.createElement("div");
+          notification.className =
+            "fixed left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-all duration-500";
+          notification.textContent = "Message sent successfully!";
+          notification.style.top = "-100px";
+          document.body.appendChild(notification);
+          // Slide down from top
+          setTimeout(() => {
+            notification.style.top = "32px";
+          }, 100);
+          // Start sliding up after delay
+          setTimeout(() => {
+            notification.style.top = "-100px";
+            notification.style.opacity = "0";
+            setTimeout(() => notification.remove(), 500);
+          }, 3000);
+          contactForm.reset();
+        });
+
+        function animatePercentage(element, targetPercent) {
+            let start = null;
+            const duration = 1000;
+
+            function updateCount(timestamp) {
+                if (!start) start = timestamp;
+                const progress = timestamp - start;
+                const current = Math.min((progress / duration) * targetPercent, targetPercent);
+                element.textContent = `${Math.round(current)}%`;
+                
+                if (progress < duration) {
+                    requestAnimationFrame(updateCount);
+                } else {
+                    element.textContent = `${targetPercent}%`;
+                }
+            }
+
+            requestAnimationFrame(updateCount);
         }
 
-        // Initialize theme
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedMode = localStorage.getItem('theme-mode') || 'dark';
-            const root = document.documentElement;
-            const icon = document.querySelector('.theme-switch i');
-            root.setAttribute('data-mode', savedMode);
-            icon.classList.add(savedMode === 'dark' ? 'fa-sun' : 'fa-moon');
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbar = document.querySelector('.navbar');
-            const homeSection = document.getElementById('home');
-            
-            // Create intersection observer
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    // If home section is more than 50% visible
-                    if (entry.target.id === 'home') {
-                        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-                            navbar.classList.add('home-active');
-                        } else {
-                            navbar.classList.remove('home-active');
-                        }
+        const skillObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const skillBar = entry.target;
+                    const targetPercent = parseInt(skillBar.dataset.percent);
+                    const container = skillBar.closest('div.bg-gray-200').parentElement;
+
+                    if (entry.isIntersecting && !skillBar.dataset.animated) {
+                        skillBar.dataset.animated = 'true';
+                        skillBar.style.width = `${targetPercent}%`;
+                        container.querySelectorAll('[data-percent]').forEach(element => {
+                            if(element !== skillBar) {
+                                animatePercentage(element, targetPercent);
+                            }
+                        });
                     }
                 });
-            }, {
-                // Options for the observer
-                threshold: [0, 0.5, 1],
-                rootMargin: '-20% 0px -20% 0px' // Adds a bit of buffer zone
-            });
-        
-            // Start observing home section
-            if (homeSection) {
-                observer.observe(homeSection);
+            },
+            { 
+                threshold: 0.25,
+                rootMargin: '0px' 
             }
-            
-            // Fallback scroll handler for smoother transitions
-            let ticking = false;
-            document.addEventListener('scroll', function() {
-                if (!ticking) {
-                    window.requestAnimationFrame(function() {
-                        const homeRect = homeSection.getBoundingClientRect();
-                        const windowHeight = window.innerHeight;
-                        
-                        // Check if home section is in viewport
-                        if (homeRect.top < windowHeight * 0.6 && homeRect.bottom > windowHeight * 0.4) {
-                            navbar.classList.add('home-active');
-                        } else {
-                            navbar.classList.remove('home-active');
-                        }
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
+        );
+
+        // Load skill data from JSON file
+        fetch('json_files/skills.json')
+          .then(response => response.json())
+          .then(data => {
+            renderSkills(data);
+
+            // Now that skills are rendered, observe each bar
+            document.querySelectorAll('.skill-bar').forEach(bar => {
+              bar.style.width = '0%'; // Initial state
+              skillObserver.observe(bar);
             });
-        });
-        </script>
-</body>
+          })
+        .catch(error => console.error('Error loading skills.json:', error));
+
+        // Render experience items
+        const experienceObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.1 });
+        const experienceContainer = document.getElementById("experience-container");
+         // Load experience data from JSON file
+        fetch('json_files/experience.json')
+          .then(response => response.json())
+          .then(experienceData => {
+            experienceData.forEach((exp, index) => {
+              const isEven = index % 2 === 0;
+              const timelineItem = document.createElement("div");
+              timelineItem.className = "relative flex items-start";
+              timelineItem.innerHTML = `
+              <div class="hidden md:block absolute top-0 ${isEven ? "left-0" : "right-0"} w-1/2 h-full"></div>
+              <div class="flex items-center justify-center absolute ${isEven ? "left-0 md:left-1/2" : "left-0 md:left-1/2"} -ml-3 md:-ml-[0.7rem] mt-7 w-7 h-7 rounded-full border-4 border-white dark:border-gray-900 bg-primary z-10"></div>
+              <div class="flex flex-col md:flex-row ${isEven ? "md:flex-row-reverse" : ""} w-full">
+                <div class="md:w-1/2 pt-3 md:pt-0 ${isEven ? "md:pl-12" : "md:pr-12"} text-right ${isEven ? "md:text-left" : "md:text-right"}">
+                  <span class="year-animation inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-2">
+                    ${exp.startYear} - ${ exp.endYear}
+                  </span>
+                </div>
+                <div class="md:w-1/2 pl-10 md:pl-0 ${isEven ? "md:pr-12 md:text-right" : "md:pl-12 md:text-left"}">
+                  <div class="exp-cont-animation bg-white dark:bg-gray-700 p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center ${isEven ? "md:justify-end" : "justify-start"} mb-3">
+                      <div class="w-16 rounded-full overflow-hidden mr-3 border-[1px] border-primary ${isEven ? "md:order-1 md:ml-3 md:mr-0" : "md:order-2 md:ml-3 md:mr-0"}">
+                        <img src="${exp.logo}" alt="${exp.company} logo" class="w-full h-full object-cover rounded-full">
+                      </div>
+                      <div class="${isEven ? "md:order-1 md:text-right" : "text-left"}">
+                        <h3 class="font-bold text-lg">${exp.position}</h3>
+                        <p class="text-primary">${exp.company}</p>
+                      </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 ${isEven ? "md:text-right" : "text-left"}">${exp.description}</p>
+                  </div>
+                </div>
+              </div>
+            `;
+              experienceContainer.appendChild(timelineItem);
+              experienceObserver.observe(timelineItem);
+            });
+          });
+      });
+      if (performance.navigation.type === 1) {
+        window.location.href = window.location.pathname;
+      }
+    </script>
+  </body>
 </html>
