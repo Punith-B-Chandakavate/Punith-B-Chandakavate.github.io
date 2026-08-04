@@ -1,0 +1,41 @@
+[
+  {
+    "title": "BiotimeCloud 2.0 Attendance Tracker Platform",
+    "image": "images/portfolio/Biotimecloud-V2.webp",
+    "alt": "Cloud-Based Attendance Tracker Project",
+    "description": "A platform for managing and analyzing biological data where I developed user-friendly features, ensured data integrity, and implemented REST APIs for seamless mobile functionality.",
+    "url": "https://biotimecloud.org/",
+    "technologies": [
+      { "name": "Python", "color": "blue" },
+      { "name": "Django & DRF", "color": "green" },
+      { "name": "PostgreSQL", "color": "purple" }
+    ]
+  },
+  {
+    "title": "Intelligent-Time Attendance Tracker Platform",
+    "image": "images/portfolio/Intelligenttime.webp",
+    "alt": "Dashboard Project",
+    "description": "A time management application that helps users track productivity and manage tasks efficiently while optimizing backend APIs and database performance.",
+    "url": "https://itimedev.minervaiot.com/",
+    "technologies": [
+      { "name": "Python", "color": "yellow" },
+      { "name": "Django & DRF", "color": "red" },
+      { "name": "PostgreSQL", "color": "indigo" }
+    ]
+  },
+  {
+    "title": "EasyTimePro – Offline Attendance System",
+    "image": "images/portfolio/EasyTimePro.webp",
+    "alt": "EasyTimePro",
+    "description": "Enterprise attendance solution supporting SQL Server, Oracle Database, MySQL, and PostgreSQL with offline device synchronization.",
+    "url": "https://www.zkteco.in/time-attendance-software/easy-time-pro",
+    "technologies": [
+      { "name": "Python", "color": "orange" },
+      { "name": "Django & DRF", "color": "teal" },
+      { "name": "PostgreSQL", "color": "pink" },
+      { "name": "SQL Server", "color": "blue" },
+      { "name": "Oracle Database", "color": "purple" },
+      { "name": "MySQL", "color": "red" }
+    ]
+  }
+]

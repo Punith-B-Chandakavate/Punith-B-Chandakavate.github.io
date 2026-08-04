@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Management System</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4f46e5",
+            secondary: "#6366f1",
+          },
+          borderRadius: {
+            none: "0px",
+            sm: "4px",
+            DEFAULT: "8px",
+            md: "12px",
+            lg: "16px",
+            xl: "20px",
+            "2xl": "24px",
+            "3xl": "32px",
+            full: "9999px",
+            button: "8px",
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    :where([class^="ri-"])::before {
+      content: "\f3c2";
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #f9fafb;
+    }
+
+    .login-container {
+      background-image: url("https://readdy.ai/api/search-image?query=modern%2520school%2520campus%2520with%2520beautiful%2520architecture%252C%2520clean%2520design%252C%2520bright%2520classrooms%252C%2520students%2520walking%2520on%2520campus%252C%2520soft%2520natural%2520lighting%252C%2520blurred%2520background%252C%2520professional%2520photography&width=1200&height=800&seq=123456&orientation=landscape");
+      background-size: cover;
+      background-position: center;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .custom-checkbox {
+      appearance: none;
+      width: 1.25rem;
+      height: 1.25rem;
+      border: 2px solid #d1d5db;
+      border-radius: 4px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .custom-checkbox:checked {
+      background-color: #4f46e5;
+      border-color: #4f46e5;
+    }
+
+    .custom-checkbox:checked::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .custom-radio {
+      appearance: none;
+      width: 1.25rem;
+      height: 1.25rem;
+      border: 2px solid #d1d5db;
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .custom-radio:checked {
+      border-color: #4f46e5;
+    }
+
+    .custom-radio:checked::after {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background-color: #4f46e5;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 3rem;
+      height: 1.5rem;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #e5e7eb;
+      transition: 0.4s;
+      border-radius: 34px;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 1.1rem;
+      width: 1.1rem;
+      left: 0.2rem;
+      bottom: 0.2rem;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked+.toggle-slider {
+      background-color: #4f46e5;
+    }
+
+    input:checked+.toggle-slider:before {
+      transform: translateX(1.5rem);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="min-h-screen flex flex-col">
+    <div class="login-container flex-1 flex items-center justify-center p-6">
+      <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-8">
+        <div class="text-center mb-8">
+          <h1 class="font-['Pacifico'] text-3xl text-primary mb-2">logo</h1>
+          <h2 class="text-xl font-semibold text-gray-800">School Management System</h2>
+          <p class="text-gray-500 mt-1">Sign in to your account</p>
+        </div>
+
+        <form id="loginForm">
+          <div class="mb-5">
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                  <i class="ri-mail-line"></i>
+                </div>
+              </div>
+              <input type="email" id="email" name="email"
+                class="pl-10 w-full h-11 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4"
+                placeholder="Enter your email" required />
+            </div>
+          </div>
+
+          <div class="mb-5">
+            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                  <i class="ri-lock-line"></i>
+                </div>
+              </div>
+              <input type="password" id="password" name="password"
+                class="pl-10 w-full h-11 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4"
+                placeholder="Enter your password" required />
+            </div>
+          </div>
+
+          <div class="mb-5">
+            <label for="role" class="block text-sm font-medium text-gray-700 mb-1">Role</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                  <i class="ri-user-settings-line"></i>
+                </div>
+              </div>
+              <div class="relative">
+                <select id="role" name="role"
+                  class="pl-10 pr-8 w-full h-11 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none appearance-none">
+                  <option value="admin">Admin</option>
+                  <option value="teacher">Teacher</option>
+                  <option value="student">Student</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                    <i class="ri-arrow-down-s-line"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center">
+              <input type="checkbox" id="remember" name="remember" class="custom-checkbox" />
+              <label for="remember" class="ml-2 text-sm text-gray-600">Remember me</label>
+            </div>
+            <a href="#" class="text-sm text-primary hover:text-primary/80">Forgot password?</a>
+          </div>
+
+          <button type="submit"
+            class="w-full h-11 bg-primary hover:bg-primary/90 text-white font-medium rounded-button flex items-center justify-center transition-colors whitespace-nowrap">
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+              <i class="ri-login-box-line"></i>
+            </div>
+            Sign In
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard (Hidden by default) -->
+  <div id="dashboard" class="hidden min-h-screen bg-gray-50 flex">
+    <!-- Sidebar -->
+    <div class="w-64 bg-white shadow-md">
+      <div class="p-4 border-b">
+        <h1 class="font-['Pacifico'] text-2xl text-primary">logo</h1>
+      </div>
+      <nav class="mt-4">
+        <ul>
+          <li class="px-4 py-2 hover:bg-gray-50">
+            <a href="#" class="flex items-center text-primary font-medium" id="dashboardLink">
+              <div class="w-5 h-5 flex items-center justify-center mr-3">
+                <i class="ri-dashboard-line"></i>
+              </div>
+              Dashboard
+            </a>
+          </li>
+          <li class="px-4 py-2 hover:bg-gray-50">
+            <a href="#" class="flex items-center text-gray-700 hover:text-primary" id="studentsLink">
+              <div class="w-5 h-5 flex items-center justify-center mr-3">
+                <i class="ri-user-line"></i>
+              </div>
+              Students
+            </a>
+          </li>
+          <li class="px-4 py-2 hover:bg-gray-50">
+            <a href="#" class="flex items-center text-gray-700 hover:text-primary" id="attendanceLink">
+              <div class="w-5 h-5 flex items-center justify-center mr-3">
+                <i class="ri-calendar-check-line"></i>
+              </div>
+              Attendance
+            </a>
+          </li>
+          <li class="px-4 py-2 hover:bg-gray-50">
+            <a href="#" class="flex items-center text-gray-700 hover:text-primary" id="reportsLink">
+              <div class="w-5 h-5 flex items-center justify-center mr-3">
+                <i class="ri-file-chart-line"></i>
+              </div>
+              Reports
+            </a>
+          </li>
+          <li class="px-4 py-2 hover:bg-gray-50">
+            <a href="#" class="flex items-center text-gray-700 hover:text-primary" id="settingsLink">
+              <div class="w-5 h-5 flex items-center justify-center mr-3">
+                <i class="ri-settings-line"></i>
+              </div>
+              Settings
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Top Navigation -->
+      <header class="bg-white shadow-sm h-16 flex items-center px-6 justify-between">
+        <div class="flex items-center">
+          <h1 class="text-xl font-semibold text-gray-800">Dashboard</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+          <div class="relative">
+            <button class="flex items-center text-gray-700 focus:outline-none">
+              <div class="w-5 h-5 flex items-center justify-center mr-1">
+                <i class="ri-notification-3-line"></i>
+              </div>
+              <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+            </button>
+          </div>
+          <div class="flex items-center">
+            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white mr-2">
+              <i class="ri-user-line"></i>
+            </div>
+            <span class="text-sm font-medium">John Smith</span>
+            <div class="w-5 h-5 flex items-center justify-center ml-1">
+              <i class="ri-arrow-down-s-line"></i>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <div id="dashboardContent" class="flex-1 p-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div class="bg-white rounded shadow p-5">
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                <i class="ri-user-line ri-lg"></i>
+              </div>
+              <div>
+                <h3 class="text-gray-500 text-sm">Total Students</h3>
+                <p class="text-2xl font-semibold">1,284</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded shadow p-5">
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-4">
+                <i class="ri-calendar-check-line ri-lg"></i>
+              </div>
+              <div>
+                <h3 class="text-gray-500 text-sm">Present Today</h3>
+                <p class="text-2xl font-semibold">1,156</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded shadow p-5">
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-600 mr-4">
+                <i class="ri-calendar-close-line ri-lg"></i>
+              </div>
+              <div>
+                <h3 class="text-gray-500 text-sm">Absent Today</h3>
+                <p class="text-2xl font-semibold">128</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-white rounded shadow p-5">
+            <h3 class="text-lg font-semibold mb-4">Attendance Overview</h3>
+            <div id="attendanceChart" class="h-64"></div>
+          </div>
+          <div class="bg-white rounded shadow p-5">
+            <h3 class="text-lg font-semibold mb-4">Class Distribution</h3>
+            <div id="classDistributionChart" class="h-64"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Students Content -->
+      <div id="studentsContent" class="hidden flex-1 p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-semibold">Student Management</h2>
+          <button id="addStudentBtn"
+            class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button flex items-center whitespace-nowrap">
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+              <i class="ri-add-line"></i>
+            </div>
+            Add New Student
+          </button>
+        </div>
+
+        <div class="bg-white rounded shadow mb-6">
+          <div class="p-4 border-b flex flex-wrap gap-4">
+            <div class="relative flex-1 min-w-[240px]">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                  <i class="ri-search-line"></i>
+                </div>
+              </div>
+              <input type="text" placeholder="Search students..."
+                class="pl-10 w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4" />
+            </div>
+            <div class="relative min-w-[180px]">
+              <select
+                class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4 pr-8 appearance-none">
+                <option value="">All Classes</option>
+                <option value="10A">Class 10A</option>
+                <option value="10B">Class 10B</option>
+                <option value="11A">Class 11A</option>
+                <option value="11B">Class 11B</option>
+                <option value="12A">Class 12A</option>
+                <option value="12B">Class 12B</option>
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                  <i class="ri-arrow-down-s-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="relative min-w-[180px]">
+              <select
+                class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4 pr-8 appearance-none">
+                <option value="">All Years</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                  <i class="ri-arrow-down-s-line"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Roll No.
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Name
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Year of Joining
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Class
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Subjects
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">STU001</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">Emily Johnson</div>
+                        <div class="text-sm text-gray-500">emily.johnson@example.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2023</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">10A</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800 mr-1">Mathematics</span>
+                    <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800 mr-1">Science</span>
+                    <span class="px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800">English</span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <button class="text-primary hover:text-primary/80 mr-3">
+                      <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-edit-line"></i>
+                      </div>
+                    </button>
+                    <button class="text-red-600 hover:text-red-800">
+                      <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-delete-bin-line"></i>
+                      </div>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">STU002</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">Michael Williams</div>
+                        <div class="text-sm text-gray-500">michael.williams@example.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2024</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">11B</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800 mr-1">Mathematics</span>
+                    <span class="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800 mr-1">Physics</span>
+                    <span class="px-2 py-1 text-xs rounded-full bg-red-100 text-red-800">Chemistry</span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <button class="text-primary hover:text-primary/80 mr-3">
+                      <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-edit-line"></i>
+                      </div>
+                    </button>
+                    <button class="text-red-600 hover:text-red-800">
+                      <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-delete-bin-line"></i>
+                      </div>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">STU003</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">Sophia Martinez</div>
+                        <div class="text-sm text-gray-500">sophia.martinez@example.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2022</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">12A</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <span class="px-2 py-1 text-xs rounded-full bg-indigo-100 text-indigo-800 mr-1">Biology</span>
+                    <span class="px-2 py-1 text-xs rounded-full bg-red-100 text-red-800 mr-1">Chemistry</span>
+                    <span class="px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800">English</span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <button class="text-primary hover:text-primary/80 mr-3">
+                      <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-edit-line"></i>
+                      </div>
+                    </button>
+                    <button class="text-red-600 hover:text-red-800">
+                      <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-delete-bin-line"></i>
+                      </div>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">STU004</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">Daniel Thompson</div>
+                        <div class="text-sm text-gray-500">daniel.thompson@example.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2023</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">10B</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800 mr-1">Mathematics</span>
+                    <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800 mr-1">Science</span>
+                    <span class="px-2 py-1 text-xs rounded-full bg-orange-100 text-orange-800">History</span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <button class="text-primary hover:text-primary/80 mr-3">
+                      <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-edit-line"></i>
+                      </div>
+                    </button>
+                    <button class="text-red-600 hover:text-red-800">
+                      <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-delete-bin-line"></i>
+                      </div>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">STU005</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div class="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">Olivia Anderson</div>
+                        <div class="text-sm text-gray-500">olivia.anderson@example.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2024</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">11A</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <span class="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800 mr-1">Physics</span>
+                    <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800 mr-1">Mathematics</span>
+                    <span class="px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800">English</span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <button class="text-primary hover:text-primary/80 mr-3">
+                      <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-edit-line"></i>
+                      </div>
+                    </button>
+                    <button class="text-red-600 hover:text-red-800">
+                      <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-delete-bin-line"></i>
+                      </div>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="px-6 py-4 flex items-center justify-between border-t">
+            <div class="text-sm text-gray-700">
+              Showing
+              <span class="font-medium">1</span>
+              to
+              <span class="font-medium">5</span>
+              of
+              <span class="font-medium">42</span>
+              results
+            </div>
+            <div class="flex space-x-2">
+              <button class="px-3 py-1 border border-gray-300 rounded-md text-sm bg-white text-gray-500">
+                Previous
+              </button>
+              <button class="px-3 py-1 border border-gray-300 rounded-md text-sm bg-primary text-white">1</button>
+              <button class="px-3 py-1 border border-gray-300 rounded-md text-sm bg-white text-gray-700">2</button>
+              <button class="px-3 py-1 border border-gray-300 rounded-md text-sm bg-white text-gray-700">3</button>
+              <button class="px-3 py-1 border border-gray-300 rounded-md text-sm bg-white text-gray-700">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Attendance Content -->
+      <div id="attendanceContent" class="hidden flex-1 p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-semibold">Attendance Management</h2>
+          <div class="flex space-x-3">
+            <button
+              class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button flex items-center whitespace-nowrap">
+              <div class="w-5 h-5 flex items-center justify-center mr-2">
+                <i class="ri-save-line"></i>
+              </div>
+              Save Attendance
+            </button>
+            <button
+              class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-button flex items-center whitespace-nowrap">
+              <div class="w-5 h-5 flex items-center justify-center mr-2">
+                <i class="ri-history-line"></i>
+              </div>
+              View Previous
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white rounded shadow mb-6">
+          <div class="p-4 border-b flex flex-wrap gap-4">
+            <div class="relative min-w-[180px]">
+              <select
+                class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4 pr-8 appearance-none">
+                <option value="">Select Class</option>
+                <option value="10A">Class 10A</option>
+                <option value="10B">Class 10B</option>
+                <option value="11A">Class 11A</option>
+                <option value="11B">Class 11B</option>
+                <option value="12A">Class 12A</option>
+                <option value="12B">Class 12B</option>
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                  <i class="ri-arrow-down-s-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="relative min-w-[180px]">
+              <input type="date"
+                class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4"
+                value="2025-04-14" />
+            </div>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Roll No.
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Name
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Status
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Remarks
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">STU001</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div class="text-sm font-medium text-gray-900">Emily Johnson</div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center space-x-4">
+                      <label class="inline-flex items-center">
+                        <input type="radio" name="attendance_STU001" value="present" class="custom-radio" checked />
+                        <span class="ml-2 text-sm text-gray-700">Present</span>
+                      </label>
+                      <label class="inline-flex items-center">
+                        <input type="radio" name="attendance_STU001" value="absent" class="custom-radio" />
+                        <span class="ml-2 text-sm text-gray-700">Absent</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <input type="text"
+                      class="w-full h-9 bg-gray-50 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-3"
+                      placeholder="Add remarks (optional)" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">STU002</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div class="text-sm font-medium text-gray-900">Michael Williams</div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center space-x-4">
+                      <label class="inline-flex items-center">
+                        <input type="radio" name="attendance_STU002" value="present" class="custom-radio" checked />
+                        <span class="ml-2 text-sm text-gray-700">Present</span>
+                      </label>
+                      <label class="inline-flex items-center">
+                        <input type="radio" name="attendance_STU002" value="absent" class="custom-radio" />
+                        <span class="ml-2 text-sm text-gray-700">Absent</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <input type="text"
+                      class="w-full h-9 bg-gray-50 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-3"
+                      placeholder="Add remarks (optional)" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">STU003</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div class="text-sm font-medium text-gray-900">Sophia Martinez</div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center space-x-4">
+                      <label class="inline-flex items-center">
+                        <input type="radio" name="attendance_STU003" value="present" class="custom-radio" />
+                        <span class="ml-2 text-sm text-gray-700">Present</span>
+                      </label>
+                      <label class="inline-flex items-center">
+                        <input type="radio" name="attendance_STU003" value="absent" class="custom-radio" checked />
+                        <span class="ml-2 text-sm text-gray-700">Absent</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <input type="text"
+                      class="w-full h-9 bg-gray-50 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-3"
+                      value="Medical leave - submitted certificate" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">STU004</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div class="text-sm font-medium text-gray-900">Daniel Thompson</div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center space-x-4">
+                      <label class="inline-flex items-center">
+                        <input type="radio" name="attendance_STU004" value="present" class="custom-radio" checked />
+                        <span class="ml-2 text-sm text-gray-700">Present</span>
+                      </label>
+                      <label class="inline-flex items-center">
+                        <input type="radio" name="attendance_STU004" value="absent" class="custom-radio" />
+                        <span class="ml-2 text-sm text-gray-700">Absent</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <input type="text"
+                      class="w-full h-9 bg-gray-50 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-3"
+                      placeholder="Add remarks (optional)" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">STU005</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div class="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div class="text-sm font-medium text-gray-900">Olivia Anderson</div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center space-x-4">
+                      <label class="inline-flex items-center">
+                        <input type="radio" name="attendance_STU005" value="present" class="custom-radio" checked />
+                        <span class="ml-2 text-sm text-gray-700">Present</span>
+                      </label>
+                      <label class="inline-flex items-center">
+                        <input type="radio" name="attendance_STU005" value="absent" class="custom-radio" />
+                        <span class="ml-2 text-sm text-gray-700">Absent</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <input type="text"
+                      class="w-full h-9 bg-gray-50 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-3"
+                      placeholder="Add remarks (optional)" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reports Content -->
+      <div id="reportsContent" class="hidden flex-1 p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-semibold">Student Reports</h2>
+          <div class="flex space-x-3">
+            <button
+              class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button flex items-center whitespace-nowrap">
+              <div class="w-5 h-5 flex items-center justify-center mr-2">
+                <i class="ri-file-download-line"></i>
+              </div>
+              Export PDF
+            </button>
+            <button
+              class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-button flex items-center whitespace-nowrap">
+              <div class="w-5 h-5 flex items-center justify-center mr-2">
+                <i class="ri-file-excel-line"></i>
+              </div>
+              Export Excel
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white rounded shadow mb-6 p-4 border-b">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Report Type</label>
+              <div class="relative">
+                <select
+                  class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4 pr-8 appearance-none">
+                  <option value="attendance">Attendance Report</option>
+                  <option value="academic">Academic Report</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                    <i class="ri-arrow-down-s-line"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Class</label>
+              <div class="relative">
+                <select
+                  class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4 pr-8 appearance-none">
+                  <option value="">All Classes</option>
+                  <option value="10A">Class 10A</option>
+                  <option value="10B">Class 10B</option>
+                  <option value="11A">Class 11A</option>
+                  <option value="11B">Class 11B</option>
+                  <option value="12A">Class 12A</option>
+                  <option value="12B">Class 12B</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                    <i class="ri-arrow-down-s-line"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">From Date</label>
+              <input type="date"
+                class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4"
+                value="2025-03-01" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">To Date</label>
+              <input type="date"
+                class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4"
+                value="2025-04-14" />
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div class="bg-white rounded shadow p-5">
+            <h3 class="text-lg font-semibold mb-4">Attendance Overview</h3>
+            <div id="attendanceReportChart" class="h-64"></div>
+          </div>
+          <div class="bg-white rounded shadow p-5">
+            <h3 class="text-lg font-semibold mb-4">Class-wise Attendance</h3>
+            <div id="classAttendanceChart" class="h-64"></div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded shadow">
+          <div class="px-6 py-4 border-b">
+            <h3 class="text-lg font-semibold">Detailed Attendance Report</h3>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Student
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Class
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Total Days
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Present
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Absent
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Attendance %
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">Emily Johnson</div>
+                        <div class="text-sm text-gray-500">STU001</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">10A</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">45</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">42</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">3</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <span class="text-sm font-medium text-gray-900 mr-2">93.3%</span>
+                      <div class="w-24 bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-green-600 h-2.5 rounded-full" style="width: 93.3%"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">Michael Williams</div>
+                        <div class="text-sm text-gray-500">STU002</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">11B</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">45</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">40</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">5</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <span class="text-sm font-medium text-gray-900 mr-2">88.9%</span>
+                      <div class="w-24 bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-green-600 h-2.5 rounded-full" style="width: 88.9%"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">Sophia Martinez</div>
+                        <div class="text-sm text-gray-500">STU003</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">12A</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">45</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">35</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">10</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <span class="text-sm font-medium text-gray-900 mr-2">77.8%</span>
+                      <div class="w-24 bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 77.8%"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">Daniel Thompson</div>
+                        <div class="text-sm text-gray-500">STU004</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">10B</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">45</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">43</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <span class="text-sm font-medium text-gray-900 mr-2">95.6%</span>
+                      <div class="w-24 bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-green-600 h-2.5 rounded-full" style="width: 95.6%"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div class="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 mr-3">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">Olivia Anderson</div>
+                        <div class="text-sm text-gray-500">STU005</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">11A</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">45</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">38</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">7</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <span class="text-sm font-medium text-gray-900 mr-2">84.4%</span>
+                      <div class="w-24 bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-green-600 h-2.5 rounded-full" style="width: 84.4%"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="px-6 py-4 flex items-center justify-between border-t">
+            <div class="text-sm text-gray-700">
+              Showing
+              <span class="font-medium">1</span>
+              to
+              <span class="font-medium">5</span>
+              of
+              <span class="font-medium">42</span>
+              results
+            </div>
+            <div class="flex space-x-2">
+              <button class="px-3 py-1 border border-gray-300 rounded-md text-sm bg-white text-gray-500">
+                Previous
+              </button>
+              <button class="px-3 py-1 border border-gray-300 rounded-md text-sm bg-primary text-white">1</button>
+              <button class="px-3 py-1 border border-gray-300 rounded-md text-sm bg-white text-gray-700">2</button>
+              <button class="px-3 py-1 border border-gray-300 rounded-md text-sm bg-white text-gray-700">3</button>
+              <button class="px-3 py-1 border border-gray-300 rounded-md text-sm bg-white text-gray-700">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Student Modal -->
+  <div id="addStudentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
+      <div class="px-6 py-4 border-b flex items-center justify-between">
+        <h3 class="text-lg font-semibold text-gray-900">Add New Student</h3>
+        <button id="closeAddStudentModal" class="text-gray-400 hover:text-gray-500">
+          <div class="w-6 h-6 flex items-center justify-center">
+            <i class="ri-close-line ri-lg"></i>
+          </div>
+        </button>
+      </div>
+      <div class="px-6 py-4">
+        <form id="addStudentForm">
+          <div class="mb-6">
+            <h4 class="text-sm font-medium text-gray-700 mb-3 uppercase">Personal Information</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="studentId" class="block text-sm font-medium text-gray-700 mb-1">Roll Number</label>
+                <input type="text" id="studentId" name="studentId"
+                  class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4"
+                  value="STU006" readonly />
+                <p class="text-xs text-gray-500 mt-1">Auto-generated</p>
+              </div>
+              <div>
+                <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                <input type="text" id="fullName" name="fullName"
+                  class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4"
+                  placeholder="Enter full name" required />
+              </div>
+              <div>
+                <label for="dob" class="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                <input type="date" id="dob" name="dob"
+                  class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4"
+                  required />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Gender</label>
+                <div class="flex space-x-4 mt-2">
+                  <label class="inline-flex items-center">
+                    <input type="radio" name="gender" value="male" class="custom-radio" checked />
+                    <span class="ml-2 text-sm text-gray-700">Male</span>
+                  </label>
+                  <label class="inline-flex items-center">
+                    <input type="radio" name="gender" value="female" class="custom-radio" />
+                    <span class="ml-2 text-sm text-gray-700">Female</span>
+                  </label>
+                  <label class="inline-flex items-center">
+                    <input type="radio" name="gender" value="other" class="custom-radio" />
+                    <span class="ml-2 text-sm text-gray-700">Other</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <h4 class="text-sm font-medium text-gray-700 mb-3 uppercase">Academic Information</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="joiningYear" class="block text-sm font-medium text-gray-700 mb-1">Year of Joining</label>
+                <div class="relative">
+                  <select id="joiningYear" name="joiningYear"
+                    class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4 pr-8 appearance-none"
+                    required>
+                    <option value="">Select Year</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                  </select>
+                  <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                      <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label for="class" class="block text-sm font-medium text-gray-700 mb-1">Class</label>
+                <div class="relative">
+                  <select id="class" name="class"
+                    class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4 pr-8 appearance-none"
+                    required>
+                    <option value="">Select Class</option>
+                    <option value="10A">Class 10A</option>
+                    <option value="10B">Class 10B</option>
+                    <option value="11A">Class 11A</option>
+                    <option value="11B">Class 11B</option>
+                    <option value="12A">Class 12A</option>
+                    <option value="12B">Class 12B</option>
+                  </select>
+                  <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                      <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Subjects</label>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-2">
+                <label class="inline-flex items-center">
+                  <input type="checkbox" name="subjects" value="mathematics" class="custom-checkbox" />
+                  <span class="ml-2 text-sm text-gray-700">Mathematics</span>
+                </label>
+                <label class="inline-flex items-center">
+                  <input type="checkbox" name="subjects" value="physics" class="custom-checkbox" />
+                  <span class="ml-2 text-sm text-gray-700">Physics</span>
+                </label>
+                <label class="inline-flex items-center">
+                  <input type="checkbox" name="subjects" value="chemistry" class="custom-checkbox" />
+                  <span class="ml-2 text-sm text-gray-700">Chemistry</span>
+                </label>
+                <label class="inline-flex items-center">
+                  <input type="checkbox" name="subjects" value="biology" class="custom-checkbox" />
+                  <span class="ml-2 text-sm text-gray-700">Biology</span>
+                </label>
+                <label class="inline-flex items-center">
+                  <input type="checkbox" name="subjects" value="english" class="custom-checkbox" />
+                  <span class="ml-2 text-sm text-gray-700">English</span>
+                </label>
+                <label class="inline-flex items-center">
+                  <input type="checkbox" name="subjects" value="history" class="custom-checkbox" />
+                  <span class="ml-2 text-sm text-gray-700">History</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <h4 class="text-sm font-medium text-gray-700 mb-3 uppercase">Contact Information</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <input type="email" id="studentEmail" name="email"
+                  class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4"
+                  placeholder="Enter email address" required />
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                <input type="tel" id="phone" name="phone"
+                  class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4"
+                  placeholder="Enter phone number" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <h4 class="text-sm font-medium text-gray-700 mb-3 uppercase">Parent/Guardian Details</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="parentName" class="block text-sm font-medium text-gray-700 mb-1">
+                  Parent/Guardian Name
+                </label>
+                <input type="text" id="parentName" name="parentName"
+                  class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4"
+                  placeholder="Enter parent/guardian name" required />
+              </div>
+              <div>
+                <label for="parentPhone" class="block text-sm font-medium text-gray-700 mb-1">
+                  Parent/Guardian Phone
+                </label>
+                <input type="tel" id="parentPhone" name="parentPhone"
+                  class="w-full h-10 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none px-4"
+                  placeholder="Enter parent/guardian phone" required />
+              </div>
+              <div class="md:col-span-2">
+                <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                <textarea id="address" name="address" rows="3"
+                  class="w-full bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none p-4"
+                  placeholder="Enter full address" required></textarea>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="px-6 py-4 border-t bg-gray-50 flex justify-end space-x-3">
+        <button id="resetFormBtn"
+          class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-button flex items-center whitespace-nowrap">
+          <div class="w-5 h-5 flex items-center justify-center mr-2">
+            <i class="ri-refresh-line"></i>
+          </div>
+          Reset
+        </button>
+        <button id="submitFormBtn"
+          class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button flex items-center whitespace-nowrap">
+          <div class="w-5 h-5 flex items-center justify-center mr-2">
+            <i class="ri-save-line"></i>
+          </div>
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Login Form Handling
+      const loginForm = document.getElementById("loginForm");
+      const dashboard = document.getElementById("dashboard");
+
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        document.querySelector(".login-container").classList.add("hidden");
+        dashboard.classList.remove("hidden");
+      });
+
+      // Navigation Handling
+      const dashboardLink = document.getElementById("dashboardLink");
+      const studentsLink = document.getElementById("studentsLink");
+      const attendanceLink = document.getElementById("attendanceLink");
+      const reportsLink = document.getElementById("reportsLink");
+
+      const dashboardContent = document.getElementById("dashboardContent");
+      const studentsContent = document.getElementById("studentsContent");
+      const attendanceContent = document.getElementById("attendanceContent");
+      const reportsContent = document.getElementById("reportsContent");
+
+      dashboardLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        hideAllContent();
+        dashboardContent.classList.remove("hidden");
+        setActiveLink(dashboardLink);
+        document.querySelector("header h1").textContent = "Dashboard";
+      });
+
+      studentsLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        hideAllContent();
+        studentsContent.classList.remove("hidden");
+        setActiveLink(studentsLink);
+        document.querySelector("header h1").textContent = "Students";
+      });
+
+      attendanceLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        hideAllContent();
+        attendanceContent.classList.remove("hidden");
+        setActiveLink(attendanceLink);
+        document.querySelector("header h1").textContent = "Attendance";
+      });
+
+      reportsLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        hideAllContent();
+        reportsContent.classList.remove("hidden");
+        setActiveLink(reportsLink);
+        document.querySelector("header h1").textContent = "Reports";
+      });
+
+      function hideAllContent() {
+        dashboardContent.classList.add("hidden");
+        studentsContent.classList.add("hidden");
+        attendanceContent.classList.add("hidden");
+        reportsContent.classList.add("hidden");
+      }
+
+      function setActiveLink(activeLink) {
+        [dashboardLink, studentsLink, attendanceLink, reportsLink].forEach((link) => {
+          link.classList.remove("text-primary", "font-medium");
+          link.classList.add("text-gray-700");
+        });
+        activeLink.classList.remove("text-gray-700");
+        activeLink.classList.add("text-primary", "font-medium");
+      }
+
+      // Add Student Modal
+      const addStudentBtn = document.getElementById("addStudentBtn");
+      const addStudentModal = document.getElementById("addStudentModal");
+      const closeAddStudentModal = document.getElementById("closeAddStudentModal");
+      const resetFormBtn = document.getElementById("resetFormBtn");
+      const submitFormBtn = document.getElementById("submitFormBtn");
+      const addStudentForm = document.getElementById("addStudentForm");
+
+      addStudentBtn.addEventListener("click", function () {
+        addStudentModal.classList.remove("hidden");
+      });
+
+      closeAddStudentModal.addEventListener("click", function () {
+        addStudentModal.classList.add("hidden");
+      });
+
+      resetFormBtn.addEventListener("click", function () {
+        addStudentForm.reset();
+      });
+
+      submitFormBtn.addEventListener("click", function () {
+        // Simulate form submission
+        addStudentModal.classList.add("hidden");
+        // Here you would normally handle the form data and add the student
+      });
+
+      // Initialize Charts
+      // Dashboard Attendance Chart
+      const attendanceChart = echarts.init(document.getElementById("attendanceChart"));
+      const attendanceOption = {
+        animation: false,
+        tooltip: {
+          trigger: "axis",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          borderColor: "#e2e8f0",
+          textStyle: {
+            color: "#1f2937",
+          },
+        },
+        legend: {
+          data: ["Present", "Absent"],
+          textStyle: {
+            color: "#1f2937",
+          },
+        },
+        grid: {
+          left: "3%",
+          right: "4%",
+          bottom: "3%",
+          containLabel: true,
+        },
+        xAxis: {
+          type: "category",
+          boundaryGap: false,
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          axisLine: {
+            lineStyle: {
+              color: "#d1d5db",
+            },
+          },
+          axisLabel: {
+            color: "#1f2937",
+          },
+        },
+        yAxis: {
+          type: "value",
+          axisLine: {
+            lineStyle: {
+              color: "#d1d5db",
+            },
+          },
+          axisLabel: {
+            color: "#1f2937",
+          },
+          splitLine: {
+            lineStyle: {
+              color: "#e5e7eb",
+            },
+          },
+        },
+        series: [
+          {
+            name: "Present",
+            type: "line",
+            stack: "Total",
+            smooth: true,
+            lineStyle: {
+              width: 2,
+              color: "rgba(87, 181, 231, 1)",
+            },
+            areaStyle: {
+              color: {
+                type: "linear",
+                x: 0,
+                y: 0,
+                x2: 0,
+                y2: 1,
+                colorStops: [
+                  {
+                    offset: 0,
+                    color: "rgba(87, 181, 231, 0.2)",
+                  },
+                  {
+                    offset: 1,
+                    color: "rgba(87, 181, 231, 0.05)",
+                  },
+                ],
+              },
+            },
+            itemStyle: {
+              color: "rgba(87, 181, 231, 1)",
+            },
+            emphasis: {
+              focus: "series",
+            },
+            data: [1150, 1142, 1156, 1149, 1138, 0, 0],
+          },
+          {
+            name: "Absent",
+            type: "line",
+            stack: "Total",
+            smooth: true,
+            lineStyle: {
+              width: 2,
+              color: "rgba(252, 141, 98, 1)",
+            },
+            areaStyle: {
+              color: {
+                type: "linear",
+                x: 0,
+                y: 0,
+                x2: 0,
+                y2: 1,
+                colorStops: [
+                  {
+                    offset: 0,
+                    color: "rgba(252, 141, 98, 0.2)",
+                  },
+                  {
+                    offset: 1,
+                    color: "rgba(252, 141, 98, 0.05)",
+                  },
+                ],
+              },
+            },
+            itemStyle: {
+              color: "rgba(252, 141, 98, 1)",
+            },
+            emphasis: {
+              focus: "series",
+            },
+            data: [134, 142, 128, 135, 146, 0, 0],
+          },
+        ],
+      };
+      attendanceChart.setOption(attendanceOption);
+
+      // Dashboard Class Distribution Chart
+      const classDistributionChart = echarts.init(document.getElementById("classDistributionChart"));
+      const classDistributionOption = {
+        animation: false,
+        tooltip: {
+          trigger: "item",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          borderColor: "#e2e8f0",
+          textStyle: {
+            color: "#1f2937",
+          },
+        },
+        legend: {
+          orient: "vertical",
+          right: 10,
+          top: "center",
+          textStyle: {
+            color: "#1f2937",
+          },
+        },
+        series: [
+          {
+            name: "Class Distribution",
+            type: "pie",
+            radius: ["40%", "70%"],
+            avoidLabelOverlap: false,
+            itemStyle: {
+              borderRadius: 8,
+              borderColor: "#fff",
+              borderWidth: 2,
+            },
+            label: {
+              show: false,
+              position: "center",
+            },
+            emphasis: {
+              label: {
+                show: true,
+                fontSize: "14",
+                fontWeight: "bold",
+                color: "#1f2937",
+              },
+            },
+            labelLine: {
+              show: false,
+            },
+            data: [
+              {
+                value: 215,
+                name: "Class 10A",
+                itemStyle: { color: "rgba(87, 181, 231, 1)" },
+              },
+              {
+                value: 210,
+                name: "Class 10B",
+                itemStyle: { color: "rgba(141, 211, 199, 1)" },
+              },
+              {
+                value: 234,
+                name: "Class 11A",
+                itemStyle: { color: "rgba(251, 191, 114, 1)" },
+              },
+              {
+                value: 235,
+                name: "Class 11B",
+                itemStyle: { color: "rgba(252, 141, 98, 1)" },
+              },
+              {
+                value: 195,
+                name: "Class 12A",
+                itemStyle: { color: "#a3a1dc" },
+              },
+              {
+                value: 195,
+                name: "Class 12B",
+                itemStyle: { color: "#e78ac3" },
+              },
+            ],
+          },
+        ],
+      };
+      classDistributionChart.setOption(classDistributionOption);
+
+      // Reports Attendance Chart
+      const attendanceReportChart = echarts.init(document.getElementById("attendanceReportChart"));
+      const attendanceReportOption = {
+        animation: false,
+        tooltip: {
+          trigger: "axis",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          borderColor: "#e2e8f0",
+          textStyle: {
+            color: "#1f2937",
+          },
+        },
+        legend: {
+          data: ["Present %", "Absent %"],
+          textStyle: {
+            color: "#1f2937",
+          },
+        },
+        grid: {
+          left: "3%",
+          right: "4%",
+          bottom: "3%",
+          containLabel: true,
+        },
+        xAxis: {
+          type: "category",
+          data: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6"],
+          axisLine: {
+            lineStyle: {
+              color: "#d1d5db",
+            },
+          },
+          axisLabel: {
+            color: "#1f2937",
+          },
+        },
+        yAxis: {
+          type: "value",
+          min: 0,
+          max: 100,
+          axisLine: {
+            lineStyle: {
+              color: "#d1d5db",
+            },
+          },
+          axisLabel: {
+            color: "#1f2937",
+            formatter: "{value}%",
+          },
+          splitLine: {
+            lineStyle: {
+              color: "#e5e7eb",
+            },
+          },
+        },
+        series: [
+          {
+            name: "Present %",
+            type: "bar",
+            barWidth: "40%",
+            itemStyle: {
+              color: "rgba(87, 181, 231, 1)",
+              borderRadius: [4, 4, 0, 0],
+            },
+            data: [92, 90, 88, 91, 89, 90],
+          },
+          {
+            name: "Absent %",
+            type: "line",
+            smooth: true,
+            lineStyle: {
+              width: 2,
+              color: "rgba(252, 141, 98, 1)",
+            },
+            itemStyle: {
+              color: "rgba(252, 141, 98, 1)",
+            },
+            data: [8, 10, 12, 9, 11, 10],
+          },
+        ],
+      };
+      attendanceReportChart.setOption(attendanceReportOption);
+
+      // Reports Class Attendance Chart
+      const classAttendanceChart = echarts.init(document.getElementById("classAttendanceChart"));
+      const classAttendanceOption = {
+        animation: false,
+        tooltip: {
+          trigger: "item",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          borderColor: "#e2e8f0",
+          textStyle: {
+            color: "#1f2937",
+          },
+        },
+        legend: {
+          orient: "horizontal",
+          bottom: 10,
+          textStyle: {
+            color: "#1f2937",
+          },
+        },
+        series: [
+          {
+            name: "Attendance %",
+            type: "pie",
+            radius: "60%",
+            center: ["50%", "45%"],
+            data: [
+              {
+                value: 92,
+                name: "Class 10A",
+                itemStyle: { color: "rgba(87, 181, 231, 1)" },
+              },
+              {
+                value: 90,
+                name: "Class 10B",
+                itemStyle: { color: "rgba(141, 211, 199, 1)" },
+              },
+              {
+                value: 88,
+                name: "Class 11A",
+                itemStyle: { color: "rgba(251, 191, 114, 1)" },
+              },
+              {
+                value: 85,
+                name: "Class 11B",
+                itemStyle: { color: "rgba(252, 141, 98, 1)" },
+              },
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+              },
+            },
+            label: {
+              formatter: "{b}: {c}%",
+              color: "#1f2937",
+            },
+          },
+        ],
+      };
+      classAttendanceChart.setOption(classAttendanceOption);
+
+      // Handle window resize for charts
+      window.addEventListener("resize", function () {
+        attendanceChart.resize();
+        classDistributionChart.resize();
+        attendanceReportChart.resize();
+        classAttendanceChart.resize();
+      });
+    });
+  </script>
+</body>
+
+</html>
