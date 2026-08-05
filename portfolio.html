@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"></noscript>
 
-    <link rel="preload" as="image" href="images/portfolio/home_background.webp" />
+    <link rel="preload" as="image" href="images/portfolio/home_background.webp" fetchpriority="high"/>
 
     <script type="application/ld+json">
       {
@@ -437,70 +437,7 @@
             50% { transform: translateY(-10px); }
             }
           </style>
-          <div class="grid grid-cols-3 md:grid-cols-6 gap-8 mb-12">
-            <img
-              src="https://skillicons.dev/icons?i=python" loading="lazy"
-              alt="Python"
-              class="w-full skill-icon"
-            />
-            <img
-              src="https://skillicons.dev/icons?i=django" loading="lazy"
-              alt="Django"
-              class="w-full skill-icon"
-            />
-            <img
-              src="https://skillicons.dev/icons?i=html" loading="lazy"
-              alt="HTML"
-              class="w-full skill-icon"
-            />
-            <img
-              src="https://skillicons.dev/icons?i=css" loading="lazy"
-              alt="CSS"
-              class="w-full skill-icon"
-            />
-            <img
-              src="https://skillicons.dev/icons?i=js" loading="lazy"
-              alt="JavaScript"
-              class="w-full skill-icon"
-            />
-            <img
-              src="https://skillicons.dev/icons?i=postgres" loading="lazy"
-              alt="PostgreSQL"
-              class="w-full skill-icon"
-            />
-          </div>
-          <div class="grid grid-cols-3 md:grid-cols-6 gap-8 mb-12">
-            <img
-              src="https://skillicons.dev/icons?i=postman" loading="lazy"
-              alt="Postman"
-              class="w-full skill-icon"
-            />
-            <img
-              src="https://skillicons.dev/icons?i=vscode" loading="lazy"
-              alt="VS Code"
-              class="w-full skill-icon"
-            />
-            <img
-              src="https://skillicons.dev/icons?i=pycharm" loading="lazy"
-              alt="PyCharm"
-              class="w-full skill-icon"
-            />
-            <img
-              src="https://skillicons.dev/icons?i=git" loading="lazy"
-              alt="Git"
-              class="w-full skill-icon"
-            />
-            <img
-              src="https://skillicons.dev/icons?i=github" loading="lazy"
-              alt="GitHub"
-              class="w-full skill-icon"
-            />
-            <img
-              src="https://skillicons.dev/icons?i=gitlab" loading="lazy"
-              alt="GitLab"
-              class="w-full skill-icon"
-            />
-          </div>
+          <div id="skills-icons" class="grid grid-cols-3 md:grid-cols-6 gap-8 mb-12"></div>
           <div id="skills-container" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
         </div>
       </div>
@@ -905,6 +842,41 @@
           contactForm.reset();
         });
 
+        // ======================================
+        // Load Technology Icons
+        // ======================================
+
+        fetch("data/icons.json")
+            .then(response => response.json())
+            .then(icons => {
+
+                const container = document.getElementById("skills-icons");
+
+                icons.forEach(icon => {
+
+                    container.insertAdjacentHTML(
+                        "beforeend",
+                        `
+                        <img
+                            src="/assets/${icon.icon}"
+                            loading="lazy"
+                            alt="${icon.name}"
+                            title="${icon.name}"
+                            class="w-full skill-icon">
+                        `
+                    );
+
+                });
+
+            })
+            .catch(error => console.error(error));
+
+
+        // ======================================
+        // Fetch & Render Skills Section
+        // ======================================
+
+
         function animatePercentage(element, targetPercent) {
             let start = null;
             const duration = 1000;
@@ -949,9 +921,6 @@
             }
         );
 
-        // ======================================
-        // Fetch & Render Skills Section
-        // ======================================
         fetch('data/skills.json')
           .then(response => response.json())
           .then(data => {

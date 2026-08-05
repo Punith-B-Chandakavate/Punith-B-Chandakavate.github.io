@@ -1,0 +1,94 @@
+[
+    {
+        "name": "Python",
+        "icon": "python.svg"
+    },
+    {
+        "name": "Django",
+        "icon": "django.svg"
+    },
+    {
+        "name": "HTML",
+        "icon": "html.svg"
+    },
+    {
+        "name": "CSS",
+        "icon": "css.svg"
+    },
+    {
+        "name": "JavaScript",
+        "icon": "javascript.svg"
+    },
+    {
+        "name": "PostgreSQL",
+        "icon": "postgresql.svg"
+    },
+    {
+        "name": "AWS",
+        "icon": "aws.svg"
+    },
+    {
+        "name": "Redshift",
+        "icon": "redshift.svg"
+    },
+    {
+        "name": "S3",
+        "icon": "s3.svg"
+    },
+    {
+        "name": "Lambda",
+        "icon": "lambda.svg"
+    },
+    {
+        "name": "Glue",
+        "icon": "glue.svg"
+    },
+    {
+        "name": "Azure",
+        "icon": "azure.svg"
+    },
+    {
+        "name": "Databricks",
+        "icon": "databricks.svg"
+    },
+    {
+        "name": "Delta Lake",
+        "icon": "delta.svg"
+    },
+    {
+        "name": "Unity Catalog",
+        "icon": "unitycatalog.svg"
+    },
+    {
+        "name": "PySpark",
+        "icon": "pyspark.svg"
+    },
+    {
+        "name": "Power BI",
+        "icon": "powerbi.svg"
+    },
+    {
+        "name": "Postman",
+        "icon": "postman.svg"
+    },
+    {
+        "name": "VS Code",
+        "icon": "vscode.svg"
+    },
+    {
+        "name": "PyCharm",
+        "icon": "pycharm.svg"
+    },
+    {
+        "name": "Git",
+        "icon": "git.svg"
+    },
+    {
+        "name": "GitHub",
+        "icon": "github.svg"
+    },
+    {
+        "name": "GitLab",
+        "icon": "gitlab.svg"
+    }
+]
