@@ -546,6 +546,13 @@
           id="projects-container" 
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
         </div>
+        <div class="text-center mt-10">
+            <button
+                id="loadMoreBtn"
+                class="px-6 py-3 bg-primary text-white rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+                Show More Projects
+            </button>
+        </div>
       </div>
     </section>
 
@@ -1014,78 +1021,96 @@
       // ======================================
       // Fetch & Render Project Cards
       // ======================================
+      let projects = [];
+      let currentIndex = 0;
+      const PROJECTS_PER_LOAD = 3;
       fetch("data/projects.json")
         .then((response) => response.json())
-        .then((projects) => {
+        .then((data) => {
 
-          const container = document.getElementById("projects-container");
+          projects = data;
 
-          projects.forEach((project) => {
+          renderProjects();
 
-            const techHTML = project.technologies
-              .map((tech) => `
-                <span class="px-3 py-1 bg-${tech.color}-100 text-${tech.color}-800 rounded-full text-sm">
-                  ${tech.name}
-                </span>
-              `)
-              .join("");
-
-            const projectCard = `
-              <div
-                class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 hover:scale-105 flex flex-col">
-
-                  <img
-                      src="${project.image}"
-                      alt="${project.alt}"
-                      class="w-full h-48 object-cover"
-                      loading="lazy">
-
-                  <div class="p-6 flex flex-col flex-1">
-
-                      <h3 class="text-xl font-semibold mb-2">
-                          ${project.title}
-                      </h3>
-
-                      <p class="text-gray-600 dark:text-gray-400 mb-4">
-                          ${project.description}
-                      </p>
-
-                      <!-- Push everything below to the bottom -->
-                      <div class="mt-auto">
-
-                          <div class="flex flex-wrap gap-2 mb-4">
-                              ${techHTML}
-                          </div>
-
-                          <a
-                              href="${project.url}"
-                              target="_blank"
-                              class="text-primary font-medium hover:text-primary/80 transition-colors">
-                              View Project →
-                          </a>
-
-                      </div>
-
-                  </div>
-
-              </div>
-            `;
-
-            container.insertAdjacentHTML("beforeend", projectCard);
-
-          });
-
-          // Keep your existing hover behavior
-          document.querySelectorAll(".project-card").forEach((card) => {
-            card.addEventListener("mouseleave", () => {
-              card.style.transform = "translateY(0)";
-            });
-          });
+          document
+            .getElementById("loadMoreBtn")
+            .addEventListener("click", renderProjects);
 
         })
         .catch((error) => {
           console.error("Failed to load projects:", error);
         });
+
+      function renderProjects() {
+
+        const container = document.getElementById("projects-container");
+
+        const nextProjects = projects.slice(
+          currentIndex,
+          currentIndex + PROJECTS_PER_LOAD
+        );
+
+        nextProjects.forEach((project) => {
+
+          const techHTML = project.technologies
+            .map(
+              (tech) => `
+                <span class="px-3 py-1 bg-${tech.color}-100 text-${tech.color}-800 rounded-full text-sm">
+                  ${tech.name}
+                </span>
+              `
+            )
+            .join("");
+
+          const projectCard = `
+            <div
+              class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 hover:scale-105 flex flex-col">
+
+                <img
+                    src="${project.image}"
+                    alt="${project.alt}"
+                    class="w-full h-48 object-cover"
+                    loading="lazy">
+
+                <div class="p-6 flex flex-col flex-1">
+
+                    <h3 class="text-xl font-semibold mb-2">
+                        ${project.title}
+                    </h3>
+
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        ${project.description}
+                    </p>
+
+                    <div class="mt-auto">
+
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${techHTML}
+                        </div>
+
+                        <a
+                            href="${project.url}"
+                            target="_blank"
+                            class="text-primary font-medium hover:text-primary/80 transition-colors">
+                            View Project →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+          `;
+
+          container.insertAdjacentHTML("beforeend", projectCard);
+
+        });
+        currentIndex += PROJECTS_PER_LOAD;
+        // Hide button when all projects are shown
+        if (currentIndex >= projects.length) {
+          document.getElementById("loadMoreBtn").classList.add("hidden");
+        }
+      }
     </script>
   </body>
 </html>

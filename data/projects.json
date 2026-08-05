@@ -1,5 +1,37 @@
 [
   {
+    "title": "ShopVista Data Modernization Platform",
+    "image": "images/portfolio/Ecommerce_Analytics.webp",
+    "alt": "ShopVista Azure Lakehouse",
+    "description": "Enterprise Azure Lakehouse Data Engineering project implementing the Medallion Architecture using Azure Data Lake Storage Gen2, Azure Databricks, Delta Lake, Unity Catalog, Auto Loader, Structured Streaming, and Power BI.",
+    "url": "https://github.com/Punith-B-Chandakavate/spark-databricks-ecommerce-pipeline",
+    "technologies": [
+      { "name": "Microsoft Azure", "color": "blue" },
+      { "name": "Azure Databricks", "color": "orange" },
+      { "name": "Delta Lake", "color": "teal" },
+      { "name": "Unity Catalog", "color": "purple" },
+      { "name": "PySpark", "color": "red" },
+      { "name": "Structured Streaming", "color": "green" },
+      { "name": "Power BI", "color": "yellow" }
+    ]
+  },
+  {
+    "title": "CarePlus Data Ingestion & Analytics Pipeline",
+    "image": "images/portfolio/CarePlus_Data_Ingestion_and_Analytics.webp",
+    "alt": "CarePlus AWS ETL Pipeline",
+    "description": "Enterprise serverless AWS Data Engineering solution that automates customer support data ingestion, transformation, and analytics using Amazon S3, AWS Lambda, AWS Glue, Amazon Redshift Serverless, and Power BI.",
+    "url": "https://github.com/Punith-B-Chandakavate/AWS-ETL-Pipeline",
+    "technologies": [
+      { "name": "AWS", "color": "orange" },
+      { "name": "Amazon S3", "color": "green" },
+      { "name": "AWS Lambda", "color": "yellow" },
+      { "name": "AWS Glue", "color": "blue" },
+      { "name": "PySpark", "color": "red" },
+      { "name": "Amazon Redshift", "color": "purple" },
+      { "name": "Power BI", "color": "pink" }
+    ]
+  },
+  {
     "title": "BiotimeCloud 2.0 Attendance Tracker Platform",
     "image": "images/portfolio/Biotimecloud-V2.webp",
     "alt": "Cloud-Based Attendance Tracker Project",
