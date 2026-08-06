@@ -247,6 +247,7 @@
             <a href="#skills" class="nav-link">Skills</a>
             <a href="#experience" class="nav-link">Experience</a>
             <a href="#projects" class="nav-link">Projects</a>
+            <a href="#certifications" class="nav-link">Certifications</a>
             <a href="#contact" class="nav-link">Contact</a>
           </div>
           <button
@@ -285,7 +286,12 @@
             href="#projects"
             class="block px-3 py-2 rounded-md text-base font-medium nav-link dark:text-gray-100 hover:bg-gray-700"
             >Projects</a
-          >          
+          >  
+          <a
+            href="#certifications"
+            class="block px-3 py-2 rounded-md text-base font-medium nav-link dark:text-gray-100 hover:bg-gray-700"
+            >Certifications</a
+          >
           <a
             href="#contact"
             class="block px-3 py-2 rounded-md text-base font-medium nav-link dark:text-gray-100 hover:bg-gray-700"
@@ -493,7 +499,58 @@
       </div>
     </section>
 
-    <section id="contact" class="py-20 bg-white dark:bg-gray-900">
+    <section id="certifications" class="py-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+                Certifications
+            </h2>
+
+            <p class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+                Certifications that validate my technical knowledge and continuous learning.
+            </p>
+
+            <div id="certificates-container"
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+            <div class="text-center mt-10">
+                <button
+                    id="loadMoreCertificatesBtn"
+                    class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition">
+                    Load More Certificates
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Certificate Modal -->
+    <div id="certificate-modal"
+        class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-4">
+
+        <div
+            class="relative bg-white dark:bg-gray-800 rounded-xl
+                  w-[800px] h-[600px]
+                  max-w-[95vw] max-h-[95vh]
+                  overflow-hidden shadow-2xl flex flex-col">
+
+            <button id="close-certificate"
+                class="absolute top-3 right-4 text-3xl font-bold text-gray-600 hover:text-red-500 z-10">
+                &times;
+            </button>
+
+            <div class="flex-1 flex items-center justify-center bg-gray-100 dark:bg-gray-900 p-4">
+
+                <img id="certificate-image"
+                    src=""
+                    alt="Certificate"
+                    class="max-w-full max-h-full object-contain">
+
+            </div>
+        </div>
+    </div>
+
+    <section id="contact" class="py-20 bg-gray-100 dark:bg-gray-800">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
           <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
@@ -858,7 +915,7 @@
                         "beforeend",
                         `
                         <img
-                            src="/assets/${icon.icon}"
+                            src="/assets/icons/${icon.icon}"
                             loading="lazy"
                             alt="${icon.name}"
                             title="${icon.name}"
@@ -996,31 +1053,22 @@
       fetch("data/projects.json")
         .then((response) => response.json())
         .then((data) => {
-
           projects = data;
-
           renderProjects();
-
           document
             .getElementById("loadMoreBtn")
             .addEventListener("click", renderProjects);
-
         })
         .catch((error) => {
           console.error("Failed to load projects:", error);
         });
-
       function renderProjects() {
-
         const container = document.getElementById("projects-container");
-
         const nextProjects = projects.slice(
           currentIndex,
           currentIndex + PROJECTS_PER_LOAD
         );
-
         nextProjects.forEach((project) => {
-
           const techHTML = project.technologies
             .map(
               (tech) => `
@@ -1030,49 +1078,36 @@
               `
             )
             .join("");
-
           const projectCard = `
             <div
               class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 hover:scale-105 flex flex-col">
-
                 <img
                     src="${project.image}"
                     alt="${project.alt}"
                     class="w-full h-48 object-cover"
                     loading="lazy">
-
                 <div class="p-6 flex flex-col flex-1">
-
                     <h3 class="text-xl font-semibold mb-2">
                         ${project.title}
                     </h3>
-
                     <p class="text-gray-600 dark:text-gray-400 mb-4">
                         ${project.description}
                     </p>
-
                     <div class="mt-auto">
-
                         <div class="flex flex-wrap gap-2 mb-4">
                             ${techHTML}
                         </div>
-
                         <a
                             href="${project.url}"
                             target="_blank"
                             class="text-primary font-medium hover:text-primary/80 transition-colors">
                             View Project →
                         </a>
-
                     </div>
-
                 </div>
-
             </div>
           `;
-
           container.insertAdjacentHTML("beforeend", projectCard);
-
         });
         currentIndex += PROJECTS_PER_LOAD;
         // Hide button when all projects are shown
@@ -1080,6 +1115,100 @@
           document.getElementById("loadMoreBtn").classList.add("hidden");
         }
       }
+
+      // ======================================
+      // Load certificate data from JSON file
+      // ======================================
+      let certificates = [];
+      let currentCertificateIndex = 0;
+      const CERTIFICATES_PER_LOAD = 3;
+      fetch("data/certificates.json")
+          .then(response => response.json())
+          .then(data => {
+              certificates = data;
+              renderCertificates();
+              document
+                  .getElementById("loadMoreCertificatesBtn")
+                  .addEventListener("click", renderCertificates);
+          })
+          .catch(error => {
+              console.error("Failed to load certificates:", error);
+          });
+
+      function renderCertificates() {
+          const container = document.getElementById("certificates-container");
+          const nextCertificates = certificates.slice(
+              currentCertificateIndex,
+              currentCertificateIndex + CERTIFICATES_PER_LOAD
+          );
+          nextCertificates.forEach(certificate => {
+              const card = `
+                  <div
+                      class="certificate-card cursor-pointer bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 hover:scale-105 flex flex-col"
+                      data-image="${certificate.image}">
+
+                      <img
+                          src="${certificate.image}"
+                          alt="${certificate.title}"
+                          class="w-full h-48 object-cover"
+                          loading="lazy">
+                      <div class="p-6 flex flex-col flex-1">
+                          <h3 class="text-xl font-semibold mb-2">
+                              ${certificate.title}
+                          </h3>
+                          <p class="text-gray-600 dark:text-gray-400">
+                              ${certificate.issuer}
+                          </p>
+                          <p class="text-gray-500 dark:text-gray-500 text-sm">
+                              Issued: ${certificate.issued}
+                          </p>
+                      </div>
+                  </div>
+              `;
+              container.insertAdjacentHTML("beforeend", card);
+          });
+
+          currentCertificateIndex += CERTIFICATES_PER_LOAD;
+
+          // Hide button when all certificates are loaded
+          if (currentCertificateIndex >= certificates.length) {
+              document
+                  .getElementById("loadMoreCertificatesBtn")
+                  .classList.add("hidden");
+          }
+
+          // Add click event to newly added cards
+          document.querySelectorAll(".certificate-card").forEach(card => {
+              if (card.dataset.bound) return;
+              card.dataset.bound = "true";
+              card.addEventListener("click", () => {
+                  document.getElementById("certificate-image").src =
+                      card.dataset.image;
+                  const modal = document.getElementById("certificate-modal");
+                  modal.classList.remove("hidden");
+                  modal.classList.add("flex");
+                  document.body.style.overflow = "hidden";
+              });
+          });
+      }
+
+      // Close popup
+      const modal = document.getElementById("certificate-modal");
+      document
+          .getElementById("close-certificate")
+          .addEventListener("click", () => {
+              modal.classList.add("hidden");
+              modal.classList.remove("flex");
+              document.body.style.overflow = "";
+          });
+
+      modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+              modal.classList.add("hidden");
+              modal.classList.remove("flex");
+              document.body.style.overflow = "";
+          }
+      });
     </script>
   </body>
 </html>
