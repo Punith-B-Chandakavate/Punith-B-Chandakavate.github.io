@@ -90,5 +90,21 @@
     {
         "name": "GitLab",
         "icon": "gitlab.svg"
+    },
+    {
+        "name": "Apache Airflow",
+        "icon": "airflow.svg"
+    },
+    {
+        "name": "Snowflake",
+        "icon": "snowflake.svg"
+    },
+    {
+        "name": "Slack",
+        "icon": "slack.svg"
+    },
+    {
+        "name": "Docker",
+        "icon": "docker.svg"
     }
 ]

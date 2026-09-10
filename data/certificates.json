@@ -1,5 +1,11 @@
 [
     {
+        "title": "Securities Pricing Data Pipeline using Docker, Airflow, Snowflake & AWS",
+        "issuer": "Codebasics",
+        "issued": "September 10, 2026",
+        "image": "assets/certificates/CB-120-690023.webp"
+    },
+    {
         "title": "Build E-commerce Data Pipeline using Spark & Databricks",
         "issuer": "Codebasics",
         "issued": "August 08, 2026",

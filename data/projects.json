@@ -32,6 +32,23 @@
     ]
   },
   {
+    "title": "EOD Securities Pricing Analytics Platform",
+    "image": "images/portfolio/EOD_Securities_Pricing_Analytics.webp",
+    "alt": "EOD Securities Pricing Analytics Platform",
+    "description": "End-to-end Data Engineering project automating EOD securities pricing analytics using Massive API, Python, Apache Airflow, Amazon S3, Snowflake, SQL, Slack, and Power BI.",
+    "url": "https://github.com/Punith-B-Chandakavate/securities-pricing-etl-pipeline",
+    "technologies": [
+      { "name": "Massive API", "color": "indigo" },
+      { "name": "Apache Airflow", "color": "sky" },
+      { "name": "Amazon S3", "color": "amber" },
+      { "name": "Snowflake", "color": "cyan" },
+      { "name": "Python", "color": "blue" },
+      { "name": "SQL", "color": "violet" },
+      { "name": "Power BI", "color": "yellow" },
+      { "name": "Slack", "color": "emerald" }
+    ]
+  },
+  {
     "title": "BiotimeCloud 2.0 Attendance Tracker Platform",
     "image": "images/portfolio/Biotimecloud-V2.webp",
     "alt": "Cloud-Based Attendance Tracker Project",
